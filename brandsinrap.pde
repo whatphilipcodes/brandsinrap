@@ -1,4 +1,4 @@
-// Gucci Gang by Philip Gerdes & Bernhard Hoffmann, supervised by Prof. Alexander Müller-Rakow
+// "brandnames in rap music" by Philip Gerdes & Bernhard Hoffmann, supervised by Prof. Alexander Müller-Rakow
 
 // SCREEN SETUP //////////////////////
 int screenResX = 1080;
