@@ -9,6 +9,7 @@ class RectBarChart {
   boolean isY;
 
 
+
   RectBarChart(PVector origin, color tCol, boolean Y) {
     P = origin;
     testColor = tCol;
@@ -51,10 +52,9 @@ class RectBarChart {
       Verts.add(new PVector(P.x, P.y + offset));
       // targetR index 5
       Verts.add(new PVector(Verts.get(index + 2).x, Verts.get(index + 4).y));
-      
+
       lastYGrowth = offset;
       totalYGrowth = totalYGrowth + offset;
-      
     } else {
       PVector PQ = PVector.sub(Verts.get(index + 1), P); //FEHLER HIER??? // Vektor AB -> B.x - A.x, B.y - A.y...? FIXED!
       offset = targetA / PQ.mag();
@@ -62,7 +62,7 @@ class RectBarChart {
       Verts.add(new PVector(P.x + offset, Verts.get(index + 1).y));
       // targetS index 5
       Verts.add(new PVector(P.x + offset, P.y));
-      
+
       lastXGrowth = offset;
       totalXGrowth = totalXGrowth + offset;
     }
@@ -74,10 +74,10 @@ class RectBarChart {
       float newQy = 0;
       float newRx = 0;
       float newRy = 0;
-      
-      PVector RtargetR = PVector.sub(Verts.get(index + 5),Verts.get(index + 2));
+
+      PVector RtargetR = PVector.sub(Verts.get(index + 5), Verts.get(index + 2));
       float prox = RtargetR.mag();
-      
+
       if (prox <= mergeThresh) {
         Verts.set(index + 1, Verts.get(index + 4));
         Verts.set(index + 2, Verts.get(index + 5));
@@ -98,10 +98,10 @@ class RectBarChart {
       float newRy = 0;
       float newSx = 0;
       float newSy = 0;
-      
-      PVector StargetS = PVector.sub(Verts.get(index + 5),Verts.get(index + 3));
+
+      PVector StargetS = PVector.sub(Verts.get(index + 5), Verts.get(index + 3));
       float prox = StargetS.mag();
-      
+
       if (prox <= mergeThresh) {
         Verts.set(index + 2, Verts.get(index + 4));
         Verts.set(index + 3, Verts.get(index + 5));
@@ -119,26 +119,33 @@ class RectBarChart {
       }
     }
   }
-  
+
   PVector newOrigin() {
     PVector newOrigin;
     if (isY == true) {
-      newOrigin = new PVector(Verts.get(index).x,Verts.get(index).y + lastYGrowth);
+      newOrigin = new PVector(Verts.get(index).x, Verts.get(index).y + lastYGrowth);
     } else {
-      newOrigin = new PVector(Verts.get(index).x + lastXGrowth,Verts.get(index).y);
+      newOrigin = new PVector(Verts.get(index).x + lastXGrowth, Verts.get(index).y);
     }
     return newOrigin;
   }
 
   PShape drawGraphic() {
     s = createShape();
+
+    //textureWrap(REPEAT);
     s.beginShape();
-    s.noStroke();
-    s.fill(testColor);
-    s.vertex(Verts.get(index).x, Verts.get(index).y);
-    s.vertex(Verts.get(index + 1).x, Verts.get(index + 1).y);
-    s.vertex(Verts.get(index + 2).x, Verts.get(index + 2).y);
-    s.vertex(Verts.get(index + 3).x, Verts.get(index + 3).y);
+    //s.textureMode(NORMAL);
+    //s.texture(img);
+    
+
+
+    //s.noStroke();
+    //s.fill(testColor);
+    s.vertex(Verts.get(index).x, Verts.get(index).y, 0, 0);
+    s.vertex(Verts.get(index + 1).x, Verts.get(index + 1).y, 2, 0);
+    s.vertex(Verts.get(index + 2).x, Verts.get(index + 2).y, 2, 2);
+    s.vertex(Verts.get(index + 3).x, Verts.get(index + 3).y, 0, 2);
     s.endShape(CLOSE);
     shape(s, 0, 0);
     return s;

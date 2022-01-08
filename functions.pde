@@ -19,4 +19,4 @@ void loadData(String year) {
   for (int i = 0; i < data.getRowCount(); i++) {
     propData[i] = propRaw[i]/sum;
   }
-}
+} 
