@@ -8,6 +8,8 @@ class RectBarChart {
   float lastYGrowth;
   boolean isY;
 
+  PShape s;
+  String brand;
 
 
   RectBarChart(PVector origin, color tCol, boolean Y) {
@@ -130,27 +132,22 @@ class RectBarChart {
     return newOrigin;
   }
 
-  PShape drawGraphic() {
+  void drawGraphic() {
     s = createShape();
 
     //textureWrap(REPEAT);
     s.beginShape();
     //s.textureMode(NORMAL);
     //s.texture(img);
-    
-
-
-    //s.noStroke();
-    //s.fill(testColor);
+   
+    s.noStroke();
+    s.fill(testColor);
     s.vertex(Verts.get(index).x, Verts.get(index).y, 0, 0);
     s.vertex(Verts.get(index + 1).x, Verts.get(index + 1).y, 2, 0);
     s.vertex(Verts.get(index + 2).x, Verts.get(index + 2).y, 2, 2);
     s.vertex(Verts.get(index + 3).x, Verts.get(index + 3).y, 0, 2);
     s.endShape(CLOSE);
-    shape(s, 0, 0);
-    return s;
+    //shape(s, 0, 0);
   }
 
-  void saveGraphic() {
-  }
 }
