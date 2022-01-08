@@ -29,6 +29,10 @@ class ChartSystem {
   }
 
   void reset () {
-    
   }
+
+  //PShape getShape() {
+  //  s = rbc.drawGraphic();
+  //  return s;
+  //}
 }

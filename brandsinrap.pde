@@ -12,13 +12,15 @@ int resY = int(screenResY * scaleFac);
 //glitch
 boolean glitch = true;
 int glitchIntensity = 10; //how displaced the glitches are (source and destination)
-int glitchInterations = 300; //how many glitches per frame
+int glitchInterations = 2500; //how many glitches per frame
 int glitchLength = 10; //how often the glitch method will run
 int glitchCount = 0;
 //masking
 PImage img;
 PGraphics bg;
 PGraphics mask;
+
+boolean debug = false;
 
 void settings() {
   size(resX, resY, P2D);
@@ -44,7 +46,9 @@ void setup() {
   loadData("fakeData");
   cs = new ChartSystem(new PVector(0, 0));
   background(125);
-  //img = loadImage("supreme1080x1920.jpg");
+
+  //printArray(propData);
+
   img = loadImage("supreme.jpg");
 
   //
@@ -52,41 +56,60 @@ void setup() {
   bg.beginDraw();
   bg.background(0);
   bg.image(img, 0, 0, width, height);
+  render(bg);
   bg.endDraw();
   mask = createGraphics(width, height);
 }
 
 void draw() {
-  //if ( frameCount == nDelay * n) {
-  //  cs.addBar(#A41AEB);
-  //} else if (frameCount == nDelay * (n + 1)) {
-  //  cs.addBar(#701BF5);
-  //} else if (frameCount == nDelay * (n + 2)) {
-  //  cs.addBar(#3923DE);
-  //} else if (frameCount == nDelay * (n + 3)) {
-  //  cs.addBar(#1B3CF5);
-  //} else if (frameCount == nDelay * (n + 4)) {
-  //  cs.addBar(#1A70EB);
-  //}
-  //cs.run();
-  //if (mousePressed) {
-  //  bIndex = 0;
-  //  totalXGrowth = 0;
-  //  totalYGrowth = 0;
-  //  frameCount = -1;
-  //}
+  if ( frameCount == nDelay * n) {
+    cs.addBar(#A41AEB);
+  } else if (frameCount == nDelay * (n + 1)) {
+    cs.addBar(#701BF5);
+  } else if (frameCount == nDelay * (n + 2)) {
+    cs.addBar(#3923DE);
+  } else if (frameCount == nDelay * (n + 3)) {
+    cs.addBar(#1B3CF5);
+  } else if (frameCount == nDelay * (n + 4)) {
+    cs.addBar(#1A70EB);
+  }
+  cs.run();
+  if (mousePressed) {
+    bIndex = 0;
+    totalXGrowth = 0;
+    totalYGrowth = 0;
+    frameCount = -1;
+    glitchCount = 0;
+  }
 
-  //add Stuff to the bg layer
-  bg.beginDraw();
-  render(bg);
-  bg.endDraw();
+  ////add Stuff to the bg layer
+  //bg.beginDraw();
+  ////if (cs.charts.size() != 0) {
+  //  //render(bg);
+  ////}
+  //bg.endDraw();
+
   //mask
   mask.beginDraw();
-  mask.rectMode(CENTER);
-  mask.square(width/2, height/2, 200);
+  maskShape(mask);
+  mask.rectMode(CORNER);
+  //mask.rect(width/2, 0, width/2, height);
+
+  if (cs.charts.size() != 0) {
+    PShape shape0 = cs.charts.get(0).s;
+    mask.shape(shape0, 0, 0);
+  }
+
+
   mask.endDraw();
   bg.mask(mask);
   image(bg, 0, 0);
+}
+
+void maskShape(PGraphics pimg) {
+  //println(cs.charts.size());
+  //if (cs.charts.size() != 0) println(cs.charts.get(0).s);
+  //pimg.
 }
 
 void render(PGraphics pimg) {
@@ -109,6 +132,6 @@ void glitch(int len, PGraphics pimg) {
       pimg.copy(x1, y1, w, h, x2, y2, w, h);
     }
     glitchCount++;
-    println("glitch: " + glitchCount);
+    if (debug) println("glitch: " + glitchCount);
   }
 }
