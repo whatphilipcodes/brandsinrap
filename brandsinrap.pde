@@ -1,4 +1,4 @@
-// Gucci Gang by Philip Gerdes & Bernhard Hoffmann, supervised by Prof. Alexander Müller-Rakow
+// Gucci Gang by Philip Gerdes & Bernhard Hoffmann, supervised by Prof. Alexander Müller-Rakow //<>//
 import java.util.Calendar;
 import generativedesign.*;
 
@@ -19,21 +19,21 @@ int glitchIntensity = 2; //how displaced the glitches are (source and destinatio
 int glitchInterations = 5000; //how many glitches per frame
 int glitchLength = 10; //how often the glitch method will run
 int glitchCount = 0;
-
 //images, masking
 PImage supreme;
 PImage gucci;
 
 PGraphics bg;
 PGraphics mask;
-int numImagesA = 2;
-PImage[] imgA = new PImage[numImagesA];
+PGraphics mask0;
+
+PGraphics pgImg0;
+PGraphics pgImg1;
 
 PShape shape0;
+PShape shape1;
 
-
-
-
+int maxNumberOfBrands = 5;
 boolean debug = false;
 
 void settings() {
@@ -81,7 +81,15 @@ void setup() {
   bg.image(supreme, 0, 0, width, height);
   render(bg);
   bg.endDraw();
+
+  pgImg0 = createGraphics(width, height);
+  pgImg0.beginDraw();
+  pgImg0.image(gucci, 0, 0, width, height);
+  render(pgImg0);
+  pgImg0.endDraw();
+
   mask = createGraphics(width, height);
+  mask0 = createGraphics(width, height);
 }
 
 void draw() {
@@ -116,23 +124,35 @@ void draw() {
 
   //Mask
   mask.beginDraw();
-  maskShape(mask);
+  //maskShape(mask);
   //mask.rectMode(CORNER);
   //mask.rect(0, 0, width, height);
-
-
-  if (cs.charts.size() != 0) {
-    //PShape 
-    for (int i = 0; i < cs.charts.size(); i++) {
-      //println(cs.charts.get(i).brand);
-      PShape chartShape = cs.charts.get(i).chartShape;
-      mask.shape(chartShape, 0, 0);
-    }
-  }
-
+  //if (cs.charts.size() != 0) {
+  //  //PShape
+  //  for (int i = 0; i < cs.charts.size(); i++) {
+  //    //println(cs.charts.get(i).brand);
+  //    PShape chartShape = cs.charts.get(i).chartShape;
+  //    mask.shape(chartShape, 0, 0);
+  //  }
+  //}
+  //if (cs.charts.size() != 0) {
+  //  for (int i = 0; i < cs.charts.size(); i++) {
+  //    PShape chartShape = cs.charts.get(i).chartShape;
+  //    mask.shape(chartShape, 0, 0);
+  //  }
+  //}
+  mask.shape(cs.charts.get(0).chartShape, 0, 0);
   mask.endDraw();
+
+  mask0.beginDraw();
+  mask0.shape(cs.charts.get(1).chartShape, 0, 0);
+  mask0.endDraw();
+
+
   bg.mask(mask);
-  image(bg, 0, 0); //<>//
+  pgImg0.mask(mask0);
+  image(bg, 0, 0);
+  image(pgImg0, 0, 0);
 }
 
 void maskShape(PGraphics pimg) {
