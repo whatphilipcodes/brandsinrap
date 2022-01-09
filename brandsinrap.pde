@@ -66,7 +66,7 @@ void setup() {
   loadData("2019");
   //printArray(propData);
   cs = new ChartSystem(new PVector(0, 0));
-  background(125);
+  background(0);
   initializeImagesMasksBrandnames();
 }
 
@@ -84,7 +84,7 @@ void initializeImagesMasksBrandnames() {
   for (TableRow row : data.rows()) {
     if (ii < maxNumberOfBrands) {
       String brandName = row.getString("Brand");
-      print("Brand" + ii + " :"  + brandName);
+      print("Brand " + ii + " :"  + brandName);
       cs.addBar(brandName, #A41AEB);
       brandImages[ii] = loadImage(brandName + ".jpg");
     }
@@ -146,6 +146,7 @@ void drawMaskedPG(PGraphics pmask, PGraphics pimg, int index) {
   pmask.endDraw();
   pimg.mask(pmask);
   image(pimg, 0, 0);
+  println("Brand " + index + ": " + cs.charts.get(index).brand);
 }
 
 void render(PGraphics pimg) {
