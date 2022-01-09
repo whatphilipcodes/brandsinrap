@@ -8,11 +8,17 @@ class RectBarChart {
   float lastYGrowth;
   boolean isY;
 
-  PShape s;
+  PShape chartShape;
   String brand;
+  //String[] brands = {
+  //  "gucci",
+  //  "supreme"
+  //};
 
 
-  RectBarChart(PVector origin, color tCol, boolean Y) {
+
+  RectBarChart(String brandName, PVector origin, color tCol, boolean Y) {
+    brand = brandName;
     P = origin;
     testColor = tCol;
     isY = Y;
@@ -133,21 +139,18 @@ class RectBarChart {
   }
 
   void drawGraphic() {
-    s = createShape();
-
+    chartShape = createShape();
     //textureWrap(REPEAT);
-    s.beginShape();
+    chartShape.beginShape();
     //s.textureMode(NORMAL);
     //s.texture(img);
-   
-    s.noStroke();
-    s.fill(testColor);
-    s.vertex(Verts.get(index).x, Verts.get(index).y, 0, 0);
-    s.vertex(Verts.get(index + 1).x, Verts.get(index + 1).y, 2, 0);
-    s.vertex(Verts.get(index + 2).x, Verts.get(index + 2).y, 2, 2);
-    s.vertex(Verts.get(index + 3).x, Verts.get(index + 3).y, 0, 2);
-    s.endShape(CLOSE);
+    chartShape.noStroke();
+    chartShape.fill(testColor);
+    chartShape.vertex(Verts.get(index).x, Verts.get(index).y, 0, 0);
+    chartShape.vertex(Verts.get(index + 1).x, Verts.get(index + 1).y, 2, 0);
+    chartShape.vertex(Verts.get(index + 2).x, Verts.get(index + 2).y, 2, 2);
+    chartShape.vertex(Verts.get(index + 3).x, Verts.get(index + 3).y, 0, 2);
+    chartShape.endShape(CLOSE);
     //shape(s, 0, 0);
   }
-
 }

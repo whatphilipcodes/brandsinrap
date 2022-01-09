@@ -10,9 +10,10 @@ class ChartSystem {
     isY = initIsY();
   }
 
-  void addBar (color testColor) {
+  void addBar (String brandName, color testColor) {
     int cIndex = charts.size();
-    charts.add(new RectBarChart(currentOr, testColor, isY));
+    println(charts.size());
+    charts.add(new RectBarChart(brandName, currentOr, testColor, isY));
     RectBarChart rbc = charts.get(cIndex);
     rbc.initCoords();
     rbc.targetCoords();
@@ -31,8 +32,4 @@ class ChartSystem {
   void reset () {
   }
 
-  //PShape getShape() {
-  //  s = rbc.drawGraphic();
-  //  return s;
-  //}
 }

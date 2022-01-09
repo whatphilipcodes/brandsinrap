@@ -1,13 +1,13 @@
 // This projects functions
 
 void loadData(String year) {
-  Table data = loadTable(year+".csv", "header");
+  data = loadTable(year+".csv", "header");
   float [] propRaw = new float [data.getRowCount()];
   propData = new float [data.getRowCount()];
 
   int rowCount = 0;
   for (TableRow row : data.rows()) {
-    propRaw[rowCount] = row.getFloat("frequency");
+    propRaw[rowCount] = row.getFloat("Count");
     rowCount++;
   }
 
