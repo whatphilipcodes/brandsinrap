@@ -18,39 +18,31 @@ void settings() {
 // Global Variables
 ChartSystem cs; // Stores the complete system of charts
 float [] propData; // Stores converted proportional values from the data csv
-PShape s;
-int index = 0; // Gloabl iteration counter
+ArrayList<PGraphics> maskData; // Stores individual masks for every brand on current table
+
 int bIndex = 0;
+int countBars;
+int amtBars = 0;
 
 float totalXGrowth;
 float totalYGrowth;
 
 int nDelay = 20;
-int n = 3;
+int n = 1;
 
 void setup() {
-  loadData("fakeData");
-  cs = new ChartSystem(new PVector(0, 0));
+  loadData("2011", 5);
+  maskData = new ArrayList<PGraphics>();
+  cs = new ChartSystem(0, 0);
   background(0);
 }
 
 void draw() {
-  if ( frameCount == nDelay * n) {
+  println(frameRate);
+  if ((frameCount == nDelay * n) && (amtBars < countBars)) {
     cs.addBar(#A41AEB);
-  } else if (frameCount == nDelay * (n + 1)) {
-    cs.addBar(#701BF5);
-  } else if (frameCount == nDelay * (n + 2)) {
-    cs.addBar(#3923DE);
-  } else if (frameCount == nDelay * (n + 3)) {
-    cs.addBar(#1B3CF5);
-  } else if (frameCount == nDelay * (n + 4)) {
-    cs.addBar(#1A70EB);
+    amtBars++;
+    n++;
   }
   cs.run();
-  if (mousePressed) {
-    bIndex = 0;
-    totalXGrowth = 0;
-    totalYGrowth = 0;
-    frameCount = -1;
-  }
 }

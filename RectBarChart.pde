@@ -1,3 +1,5 @@
+// Main code to construct bars from table data
+
 class RectBarChart {
   // Local object variabes
   PVector P;
@@ -7,12 +9,21 @@ class RectBarChart {
   float lastXGrowth;
   float lastYGrowth;
   boolean isY;
+  PGraphics pg;
+  PShape s;
+  int chartNo;
+  
+  PImage testIMG;
 
 
-  RectBarChart(PVector origin, color tCol, boolean Y) {
+  RectBarChart(PVector origin, color tCol, boolean Y, int cN) {
     P = origin;
     testColor = tCol;
     isY = Y;
+    pg = createGraphics(width, height);
+    chartNo = cN;
+    testIMG = loadImage("testIMG.jpg");
+    testIMG.resize(width, height);
   }
 
   // Sets up base coordinates
@@ -26,14 +37,14 @@ class RectBarChart {
       // R index 2
       Verts.add(new PVector(P.x + (width - totalXGrowth), P.y));
       // S index 3
-      Verts.add(Verts.get(index + 2));
+      Verts.add(Verts.get(2));
     } else {
       // P index 0
       Verts.add(P);
       // Q index 1
       Verts.add(new PVector(P.x, P.y + (height - totalYGrowth)));
       // R index 2
-      Verts.add(Verts.get(index + 1));
+      Verts.add(Verts.get(1));
       // S index 3
       Verts.add(P);
     }
@@ -45,21 +56,21 @@ class RectBarChart {
     float offset;
 
     if (isY == true) {
-      PVector PS = PVector.sub(Verts.get(index + 3), P);
+      PVector PS = PVector.sub(Verts.get(3), P);
       offset = targetA / PS.mag();
       // targetQ index 4
       Verts.add(new PVector(P.x, P.y + offset));
       // targetR index 5
-      Verts.add(new PVector(Verts.get(index + 2).x, Verts.get(index + 4).y));
+      Verts.add(new PVector(Verts.get(2).x, Verts.get(4).y));
       
       lastYGrowth = offset;
       totalYGrowth = totalYGrowth + offset;
       
     } else {
-      PVector PQ = PVector.sub(Verts.get(index + 1), P); //FEHLER HIER??? // Vektor AB -> B.x - A.x, B.y - A.y...? FIXED!
+      PVector PQ = PVector.sub(Verts.get(1), P); //FEHLER HIER??? // Vektor AB -> B.x - A.x, B.y - A.y...? FIXED!
       offset = targetA / PQ.mag();
       // targetR index 4
-      Verts.add(new PVector(P.x + offset, Verts.get(index + 1).y));
+      Verts.add(new PVector(P.x + offset, Verts.get(1).y));
       // targetS index 5
       Verts.add(new PVector(P.x + offset, P.y));
       
@@ -75,23 +86,23 @@ class RectBarChart {
       float newRx = 0;
       float newRy = 0;
       
-      PVector RtargetR = PVector.sub(Verts.get(index + 5),Verts.get(index + 2));
+      PVector RtargetR = PVector.sub(Verts.get(5),Verts.get(2));
       float prox = RtargetR.mag();
       
       if (prox <= mergeThresh) {
-        Verts.set(index + 1, Verts.get(index + 4));
-        Verts.set(index + 2, Verts.get(index + 5));
+        Verts.set(1, Verts.get(4));
+        Verts.set(2, Verts.get(5));
       } else {
         // Q -> targetQ
-        newQx = lerp(Verts.get(index + 1).x, Verts.get(index + 4).x, lerpSpeed); // Lerp x-coordinate
-        newQy = lerp(Verts.get(index + 1).y, Verts.get(index + 4).y, lerpSpeed); // Lerp y-coordinate
+        newQx = lerp(Verts.get(1).x, Verts.get(4).x, lerpSpeed); // Lerp x-coordinate
+        newQy = lerp(Verts.get(1).y, Verts.get(4).y, lerpSpeed); // Lerp y-coordinate
 
         // R -> targetR
-        newRx = lerp(Verts.get(index + 2).x, Verts.get(index + 5).x, lerpSpeed); // Lerp x-coordinate
-        newRy = lerp(Verts.get(index + 2).y, Verts.get(index + 5).y, lerpSpeed); // Lerp y-coordinate
+        newRx = lerp(Verts.get(2).x, Verts.get(5).x, lerpSpeed); // Lerp x-coordinate
+        newRy = lerp(Verts.get(2).y, Verts.get(5).y, lerpSpeed); // Lerp y-coordinate
 
-        Verts.set(index + 1, new PVector(newQx, newQy));
-        Verts.set(index + 2, new PVector(newRx, newRy));
+        Verts.set(1, new PVector(newQx, newQy));
+        Verts.set(2, new PVector(newRx, newRy));
       }
     } else {
       float newRx = 0;
@@ -99,23 +110,23 @@ class RectBarChart {
       float newSx = 0;
       float newSy = 0;
       
-      PVector StargetS = PVector.sub(Verts.get(index + 5),Verts.get(index + 3));
+      PVector StargetS = PVector.sub(Verts.get(5),Verts.get(3));
       float prox = StargetS.mag();
       
       if (prox <= mergeThresh) {
-        Verts.set(index + 2, Verts.get(index + 4));
-        Verts.set(index + 3, Verts.get(index + 5));
+        Verts.set(2, Verts.get(4));
+        Verts.set(3, Verts.get(5));
       } else {
         // R -> targetR
-        newRx = lerp(Verts.get(index + 2).x, Verts.get(index + 4).x, lerpSpeed); // Lerp x-coordinate
-        newRy = lerp(Verts.get(index + 2).y, Verts.get(index + 4).y, lerpSpeed); // Lerp y-coordinate
+        newRx = lerp(Verts.get(2).x, Verts.get(4).x, lerpSpeed); // Lerp x-coordinate
+        newRy = lerp(Verts.get(2).y, Verts.get(4).y, lerpSpeed); // Lerp y-coordinate
 
         // S -> targetS
-        newSx = lerp(Verts.get(index + 3).x, Verts.get(index + 5).x, lerpSpeed); // Lerp x-coordinate
-        newSy = lerp(Verts.get(index + 3).y, Verts.get(index + 5).y, lerpSpeed); // Lerp y-coordinate
+        newSx = lerp(Verts.get(3).x, Verts.get(5).x, lerpSpeed); // Lerp x-coordinate
+        newSy = lerp(Verts.get(3).y, Verts.get(5).y, lerpSpeed); // Lerp y-coordinate
 
-        Verts.set(index + 2, new PVector(newRx, newRy));
-        Verts.set(index + 3, new PVector(newSx, newSy));
+        Verts.set(2, new PVector(newRx, newRy));
+        Verts.set(3, new PVector(newSx, newSy));
       }
     }
   }
@@ -123,27 +134,33 @@ class RectBarChart {
   PVector newOrigin() {
     PVector newOrigin;
     if (isY == true) {
-      newOrigin = new PVector(Verts.get(index).x,Verts.get(index).y + lastYGrowth);
+      newOrigin = new PVector(Verts.get(0).x,Verts.get(0).y + lastYGrowth);
     } else {
-      newOrigin = new PVector(Verts.get(index).x + lastXGrowth,Verts.get(index).y);
+      newOrigin = new PVector(Verts.get(0).x + lastXGrowth,Verts.get(0).y);
     }
     return newOrigin;
   }
 
-  PShape drawGraphic() {
+  void createMask() {
     s = createShape();
     s.beginShape();
     s.noStroke();
-    s.fill(testColor);
-    s.vertex(Verts.get(index).x, Verts.get(index).y);
-    s.vertex(Verts.get(index + 1).x, Verts.get(index + 1).y);
-    s.vertex(Verts.get(index + 2).x, Verts.get(index + 2).y);
-    s.vertex(Verts.get(index + 3).x, Verts.get(index + 3).y);
+    s.fill(255);
+    s.vertex(Verts.get(0).x, Verts.get(0).y);
+    s.vertex(Verts.get(1).x, Verts.get(1).y);
+    s.vertex(Verts.get(2).x, Verts.get(2).y);
+    s.vertex(Verts.get(3).x, Verts.get(3).y);
     s.endShape(CLOSE);
-    shape(s, 0, 0);
-    return s;
+    shape(s,0,0);
+    
+    pg.beginDraw();
+    pg.shape(s, 0, 0);
+    pg.endDraw();
+    maskData.set(chartNo, pg);
   }
-
-  void saveGraphic() {
+  
+  void drawTest() {
+    testIMG.mask(maskData.get(chartNo));
+    image(testIMG,0,0);
   }
 }

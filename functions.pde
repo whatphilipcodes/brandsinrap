@@ -1,22 +1,33 @@
-// This projects functions
+// This projects main seperate function(s)
 
-void loadData(String year) {
+void loadData(String year, int limit) {
+  
   Table data = loadTable(year+".csv", "header");
-  float [] propRaw = new float [data.getRowCount()];
-  propData = new float [data.getRowCount()];
+  int dataLength = 0;
 
-  int rowCount = 0;
-  for (TableRow row : data.rows()) {
-    propRaw[rowCount] = row.getFloat("frequency");
-    rowCount++;
+  // Compute data length
+  for (int i = 0; i < limit; i++) {
+    if (data.getFloat(i, "Count") != 0) {
+      dataLength++;
+    }
+  }
+  
+  propData = new float [dataLength];
+  
+  for (int i = 0; i < dataLength; i++) {
+    propData[i] = data.getFloat(i, "Count");
   }
 
   // Calculate sum of all frequencies
   float sum = 0;
-  for (float f : propRaw) sum += f;
+  for (float f : propData) sum += f;
 
   // Convert amounts to percent factors
-  for (int i = 0; i < data.getRowCount(); i++) {
-    propData[i] = propRaw[i]/sum;
+  for (int i = 0; i < dataLength; i++) {
+    propData[i] = propData[i]/sum;
+  }
+  
+  for (int i = 0; i < dataLength; i++) {
+      countBars = countBars + 1;
   }
 }
