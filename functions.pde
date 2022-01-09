@@ -27,7 +27,5 @@ void loadData(String year, int limit) {
     propData[i] = propData[i]/sum;
   }
   
-  for (int i = 0; i < dataLength; i++) {
-      countBars = countBars + 1;
-  }
+  countBars = dataLength;
 }

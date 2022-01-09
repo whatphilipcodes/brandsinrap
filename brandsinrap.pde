@@ -31,7 +31,7 @@ int nDelay = 20;
 int n = 1;
 
 void setup() {
-  loadData("2011", 5);
+  loadData("2021", 5);
   maskData = new ArrayList<PGraphics>();
   cs = new ChartSystem(0, 0);
   background(0);
@@ -40,7 +40,7 @@ void setup() {
 void draw() {
   println(frameRate);
   if ((frameCount == nDelay * n) && (amtBars < countBars)) {
-    cs.addBar(#A41AEB);
+    cs.addBar();
     amtBars++;
     n++;
   }

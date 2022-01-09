@@ -11,17 +11,18 @@ class RectBarChart {
   boolean isY;
   PGraphics pg;
   PShape s;
-  int chartNo;
+  int chartIndex;
   
   PImage testIMG;
 
 
-  RectBarChart(PVector origin, color tCol, boolean Y, int cN) {
+  RectBarChart(PVector origin, boolean Y, int cID) {
     P = origin;
-    testColor = tCol;
     isY = Y;
+    
     pg = createGraphics(width, height);
-    chartNo = cN;
+    chartIndex = cID;
+    
     testIMG = loadImage("testIMG.jpg");
     testIMG.resize(width, height);
   }
@@ -156,11 +157,11 @@ class RectBarChart {
     pg.beginDraw();
     pg.shape(s, 0, 0);
     pg.endDraw();
-    maskData.set(chartNo, pg);
+    maskData.set(chartIndex, pg);
   }
   
   void drawTest() {
-    testIMG.mask(maskData.get(chartNo));
+    testIMG.mask(maskData.get(chartIndex));
     image(testIMG,0,0);
   }
 }

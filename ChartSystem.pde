@@ -6,7 +6,7 @@ class ChartSystem {
   PVector currentOr;
   boolean isY;
   
-  int chartNo = 0;
+  int chartIndex = 0;
 
   ChartSystem(int x, int y) {
     currentOr = new PVector(x, y);
@@ -14,16 +14,16 @@ class ChartSystem {
     isY = initIsY();
   }
 
-  void addBar (color testColor) {
-    charts.add(new RectBarChart(currentOr, testColor, isY, chartNo));
-    RectBarChart rbc = charts.get(chartNo);
+  void addBar () {
+    charts.add(new RectBarChart(currentOr, isY, chartIndex));
+    RectBarChart rbc = charts.get(chartIndex);
     rbc.initCoords();
     rbc.targetCoords();
     currentOr = rbc.newOrigin();
     isY = !isY;
     
     maskData.add(new PGraphics());
-    chartNo++;
+    chartIndex++;
   }
 
   void run () {
