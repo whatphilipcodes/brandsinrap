@@ -6,9 +6,13 @@ void loadData(String year) {
   propData = new float [data.getRowCount()];
 
   int rowCount = 0;
+  int ii = 0;
   for (TableRow row : data.rows()) {
-    propRaw[rowCount] = row.getFloat("Count");
-    rowCount++;
+    if (ii < maxNumberOfBrands) {
+      propRaw[rowCount] = row.getFloat("Count");
+      rowCount++;
+    }
+    ii++;
   }
 
   // Calculate sum of all frequencies
@@ -19,4 +23,4 @@ void loadData(String year) {
   for (int i = 0; i < data.getRowCount(); i++) {
     propData[i] = propRaw[i]/sum;
   }
-} 
+}

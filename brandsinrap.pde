@@ -1,4 +1,4 @@
-// Gucci Gang by Philip Gerdes & Bernhard Hoffmann, supervised by Prof. Alexander Müller-Rakow //<>//
+// Gucci Gang by Philip Gerdes & Bernhard Hoffmann, supervised by Prof. Alexander Müller-Rakow //<>// //<>//
 import java.util.Calendar;
 import generativedesign.*;
 
@@ -11,6 +11,8 @@ float scaleFac = 0.5;
 int resX = int(screenResX * scaleFac);
 int resY = int(screenResY * scaleFac);
 
+
+int maxNumberOfBrands = 5;
 //glitch
 boolean glitch = true;
 //1-3,50000  1,100000  10,1000
@@ -22,18 +24,21 @@ int glitchCount = 0;
 //images, masking
 PImage supreme;
 PImage gucci;
-
-PGraphics bg;
-PGraphics mask;
+PImage lv;
+PImage dior;
+PImage adidas;
+PImage[] brandImages = new PImage[maxNumberOfBrands];
 PGraphics mask0;
-
+PGraphics mask1;
+PGraphics mask2;
+PGraphics mask3;
+PGraphics mask4;
 PGraphics pgImg0;
 PGraphics pgImg1;
+PGraphics pgImg2;
+PGraphics pgImg3;
+PGraphics pgImg4;
 
-PShape shape0;
-PShape shape1;
-
-int maxNumberOfBrands = 5;
 boolean debug = false;
 
 void settings() {
@@ -59,37 +64,49 @@ int n = 3;
 
 void setup() {
   loadData("2019");
-  printArray(propData);
-
+  //printArray(propData);
   cs = new ChartSystem(new PVector(0, 0));
   background(125);
+  initializeImagesMasksBrandnames();
+}
 
+void initializePGraphicsImage(PGraphics pg, PImage pi) {
+  pg.beginDraw();
+  pg.background(0);
+  pg.image(pi, 0, 0, width, height);
+  render(pg);
+  pg.endDraw();
+}
+
+void initializeImagesMasksBrandnames() {
+  //add BarCharts with brand names
+  int ii = 0;
   for (TableRow row : data.rows()) {
-    String brandName = row.getString("Brand");
-    //print(brandName);
-    cs.addBar(brandName, #A41AEB);
+    if (ii < maxNumberOfBrands) {
+      String brandName = row.getString("Brand");
+      print("Brand" + ii + " :"  + brandName);
+      cs.addBar(brandName, #A41AEB);
+      brandImages[ii] = loadImage(brandName + ".jpg");
+    }
+    ii++;
   }
-
-  supreme = loadImage("supreme.jpg");
-  gucci = loadImage("gucci.jpg");
-
-
-  //
-  bg = createGraphics(width, height);
-  bg.beginDraw();
-  bg.background(0);
-  bg.image(supreme, 0, 0, width, height);
-  render(bg);
-  bg.endDraw();
-
+  //create PGraphics for images and masks
   pgImg0 = createGraphics(width, height);
-  pgImg0.beginDraw();
-  pgImg0.image(gucci, 0, 0, width, height);
-  render(pgImg0);
-  pgImg0.endDraw();
-
-  mask = createGraphics(width, height);
+  pgImg1 = createGraphics(width, height);
+  pgImg2 = createGraphics(width, height);
+  pgImg3 = createGraphics(width, height);
+  pgImg4 = createGraphics(width, height);
   mask0 = createGraphics(width, height);
+  mask1 = createGraphics(width, height);
+  mask2 = createGraphics(width, height);
+  mask3 = createGraphics(width, height);
+  mask4 = createGraphics(width, height);
+
+  if (maxNumberOfBrands > 0) initializePGraphicsImage(pgImg0, brandImages[0]);
+  if (maxNumberOfBrands > 1) initializePGraphicsImage(pgImg1, brandImages[1]);
+  if (maxNumberOfBrands > 2) initializePGraphicsImage(pgImg2, brandImages[2]);
+  if (maxNumberOfBrands > 3) initializePGraphicsImage(pgImg3, brandImages[3]);
+  if (maxNumberOfBrands > 4) initializePGraphicsImage(pgImg4, brandImages[4]);
 }
 
 void draw() {
@@ -115,50 +132,20 @@ void draw() {
     glitchCount = 0;
   }
 
-  ////add Stuff to the bg layer
-  //bg.beginDraw();
-  ////if (cs.charts.size() != 0) {
-  //  //render(bg);
-  ////}
-  //bg.endDraw();
-
-  //Mask
-  mask.beginDraw();
-  //maskShape(mask);
-  //mask.rectMode(CORNER);
-  //mask.rect(0, 0, width, height);
-  //if (cs.charts.size() != 0) {
-  //  //PShape
-  //  for (int i = 0; i < cs.charts.size(); i++) {
-  //    //println(cs.charts.get(i).brand);
-  //    PShape chartShape = cs.charts.get(i).chartShape;
-  //    mask.shape(chartShape, 0, 0);
-  //  }
-  //}
-  //if (cs.charts.size() != 0) {
-  //  for (int i = 0; i < cs.charts.size(); i++) {
-  //    PShape chartShape = cs.charts.get(i).chartShape;
-  //    mask.shape(chartShape, 0, 0);
-  //  }
-  //}
-  mask.shape(cs.charts.get(0).chartShape, 0, 0);
-  mask.endDraw();
-
-  mask0.beginDraw();
-  mask0.shape(cs.charts.get(1).chartShape, 0, 0);
-  mask0.endDraw();
-
-
-  bg.mask(mask);
-  pgImg0.mask(mask0);
-  image(bg, 0, 0);
-  image(pgImg0, 0, 0);
+  if (maxNumberOfBrands > 0) drawMaskedPG(mask0, pgImg0, 0);
+  if (maxNumberOfBrands > 1)drawMaskedPG(mask1, pgImg1, 1);
+  if (maxNumberOfBrands > 2) drawMaskedPG(mask2, pgImg2, 2);
+  if (maxNumberOfBrands > 3)drawMaskedPG(mask3, pgImg3, 3);
+  if (maxNumberOfBrands > 4) drawMaskedPG(mask4, pgImg4, 4);
 }
 
-void maskShape(PGraphics pimg) {
-  //println(cs.charts.size());
-  //if (cs.charts.size() != 0) println(cs.charts.get(0).s);
-  //pimg.
+void drawMaskedPG(PGraphics pmask, PGraphics pimg, int index) {
+  PShape ps = cs.charts.get(index).chartShape;
+  pmask.beginDraw();
+  pmask.shape(ps, 0, 0);
+  pmask.endDraw();
+  pimg.mask(pmask);
+  image(pimg, 0, 0);
 }
 
 void render(PGraphics pimg) {

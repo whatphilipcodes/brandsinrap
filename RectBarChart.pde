@@ -10,11 +10,6 @@ class RectBarChart {
 
   PShape chartShape;
   String brand;
-  //String[] brands = {
-  //  "gucci",
-  //  "supreme"
-  //};
-
 
 
   RectBarChart(String brandName, PVector origin, color tCol, boolean Y) {
