@@ -1,9 +1,18 @@
-import ddf.minim.*; //<>//
+import ddf.minim.*; //<>// //<>// //<>//
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
 import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
+
+//Minim Sound Libary
+Minim minim;
+AudioOutput out;
+Sampler ssupreme;
+Sampler sgucci;
+Sampler slouisvuitton;
+Sampler sysl;
+
 
 // Gucci Gang by Philip Gerdes & Bernhard Hoffmann, supervised by Prof. Alexander Müller-Rakow //<>//
 import java.util.Calendar;
@@ -22,7 +31,8 @@ int resY = int(screenResY * scaleFac);
 int maxNumberOfBrands = 5;
 boolean glitch = true;
 boolean printOnce = true;
-boolean debug = false;
+boolean debug = true;
+
 //1-3,50000  1,100000  10,1000
 //2, 50000
 int glitchIntensity = 4; //how displaced the glitches are (source and destination)
@@ -50,8 +60,8 @@ PGraphics pgImg4;
 
 void settings() {
   size(resX, resY, P2D);
-  fullScreen(2);
-  smooth(2);
+  //fullScreen(2);
+  //smooth(2);
 }
 //////////////////////////////////////
 
@@ -75,6 +85,18 @@ void setup() {
   cs = new ChartSystem(new PVector(0, 0));
   background(0);
   initializeImagesMasksBrandnames();
+
+  //load audio data
+  minim = new Minim(this);
+  out = minim.getLineOut();
+  ssupreme = new Sampler ("supreme.aif", 1, minim);
+  sgucci = new Sampler ("gucci.aif", 1, minim);
+  slouisvuitton = new Sampler ("louis vuitton.aif", 1, minim);
+  sysl = new Sampler ("ysl.aif", 1, minim);
+  ssupreme.patch(out);
+  sgucci.patch(out);
+  slouisvuitton.patch(out);
+  sysl.patch(out);
 }
 
 void initializePGraphicsImage(PGraphics pg, PImage pi) {
@@ -130,7 +152,7 @@ void draw() {
   //  cs.addBar("moncleur", #1A70EB);
   //}
   cs.run();
-
+//reset
   if (mousePressed) {
     bIndex = 0;
     totalXGrowth = 0;
@@ -144,6 +166,54 @@ void draw() {
   if (maxNumberOfBrands > 2) drawMaskedPG(mask2, pgImg2, 2);
   if (maxNumberOfBrands > 3) drawMaskedPG(mask3, pgImg3, 3);
   if (maxNumberOfBrands > 4) drawMaskedPG(mask4, pgImg4, 4);
+
+  //ighlight charts & play samples
+  if ( frameCount == nDelay * n) {
+    playSample(0);
+  } else if (frameCount == nDelay * (n + 10)) {
+    playSample(1);
+  } else if (frameCount == nDelay * (n + 20)) {
+    playSample(2);
+  } else if (frameCount == nDelay * (n + 30)) {
+    
+  } else if (frameCount == nDelay * (n + 40)) {
+  }
+
+  //print(frameCount);
+}
+
+void playSample(int index) {
+  String brandName = cs.charts.get(index).brand;
+  //if (brandName.equals("gucci") && cs.charts.get(index).highlight == true) {
+  //  ssupreme.trigger(); 
+
+  //  cs.charts.get(index).highlight = false;
+  //  //}
+  //}
+
+  switch(brandName) {
+  case "gucci":
+    println("playSample: " + brandName);
+    if (cs.charts.get(index).highlight == true) {
+      sgucci.trigger();
+      cs.charts.get(index).highlight = false;
+    }
+    break;
+  case "louis vuitton":
+    println("playSample: " + brandName);
+    if (cs.charts.get(index).highlight == true) {
+      slouisvuitton.trigger();
+      cs.charts.get(index).highlight = false;
+    }
+    break;
+  case "yves saint laurent":
+    println("playSample: " + brandName);
+    if (cs.charts.get(index).highlight == true) {
+      sysl.trigger();
+      cs.charts.get(index).highlight = false;
+    }
+    break;
+  }
 }
 
 void drawMaskedPG(PGraphics pmask, PGraphics pimg, int index) {
@@ -153,7 +223,7 @@ void drawMaskedPG(PGraphics pmask, PGraphics pimg, int index) {
   pmask.endDraw();
   pimg.mask(pmask);
   image(pimg, 0, 0);
-  if(debug) {
+  if (debug) {
     println("brand " + index + ": " + cs.charts.get(index).brand);
   }
 }
@@ -177,7 +247,7 @@ void glitch(int len, PGraphics pimg) {
       pimg.copy(x1, y1, w, h, x2, y2, w, h);
     }
     glitchCount++;
-    if (debug) println("glitch: " + glitchCount);
+    //if (debug) println("glitch: " + glitchCount);
   }
 }
 

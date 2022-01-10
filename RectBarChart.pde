@@ -10,6 +10,7 @@ class RectBarChart {
 
   PShape chartShape;
   String brand;
+  boolean highlight = true;
 
 
   RectBarChart(String brandName, PVector origin, color tCol, boolean Y) {
