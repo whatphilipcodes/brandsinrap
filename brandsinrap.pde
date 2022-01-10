@@ -1,4 +1,8 @@
-import ddf.minim.*; //<>// //<>// //<>//
+// Gucci Gang by Philip Gerdes & Bernhard Hoffmann, supervised by Prof. Alexander Müller-Rakow //<>// //<>//
+import java.util.Calendar;
+import generativedesign.*;
+import java.util.Map;
+import ddf.minim.*; //<>// //<>//
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
 import ddf.minim.signals.*;
@@ -8,15 +12,12 @@ import ddf.minim.ugens.*;
 //Minim Sound Libary
 Minim minim;
 AudioOutput out;
-Sampler ssupreme;
 Sampler sgucci;
 Sampler slouisvuitton;
 Sampler sysl;
-
-
-// Gucci Gang by Philip Gerdes & Bernhard Hoffmann, supervised by Prof. Alexander Müller-Rakow //<>//
-import java.util.Calendar;
-import generativedesign.*;
+Sampler snike;
+Sampler ssupreme;
+HashMap<String, Sampler> samples = new HashMap<String, Sampler>();
 
 // SCREEN SETUP //////////////////////
 int screenResX = 1080;
@@ -31,7 +32,7 @@ int resY = int(screenResY * scaleFac);
 int maxNumberOfBrands = 5;
 boolean glitch = true;
 boolean printOnce = true;
-boolean debug = true;
+boolean debug = false;
 
 //1-3,50000  1,100000  10,1000
 //2, 50000
@@ -89,14 +90,23 @@ void setup() {
   //load audio data
   minim = new Minim(this);
   out = minim.getLineOut();
+
   ssupreme = new Sampler ("supreme.aif", 1, minim);
   sgucci = new Sampler ("gucci.aif", 1, minim);
   slouisvuitton = new Sampler ("louis vuitton.aif", 1, minim);
   sysl = new Sampler ("ysl.aif", 1, minim);
+  snike = new Sampler ("nike.aif", 1, minim);
   ssupreme.patch(out);
   sgucci.patch(out);
   slouisvuitton.patch(out);
   sysl.patch(out);
+  snike.patch(out);
+  //put in hashmap
+  samples.put("gucci", sgucci);
+  samples.put("supreme", ssupreme);
+  samples.put("louis vuitton", slouisvuitton);
+  samples.put("yves saint laurent", sysl);
+  samples.put("nike", snike);
 }
 
 void initializePGraphicsImage(PGraphics pg, PImage pi) {
@@ -152,7 +162,7 @@ void draw() {
   //  cs.addBar("moncleur", #1A70EB);
   //}
   cs.run();
-//reset
+  //reset
   if (mousePressed) {
     bIndex = 0;
     totalXGrowth = 0;
@@ -167,7 +177,7 @@ void draw() {
   if (maxNumberOfBrands > 3) drawMaskedPG(mask3, pgImg3, 3);
   if (maxNumberOfBrands > 4) drawMaskedPG(mask4, pgImg4, 4);
 
-  //ighlight charts & play samples
+  //highlight charts & play samples
   if ( frameCount == nDelay * n) {
     playSample(0);
   } else if (frameCount == nDelay * (n + 10)) {
@@ -175,44 +185,18 @@ void draw() {
   } else if (frameCount == nDelay * (n + 20)) {
     playSample(2);
   } else if (frameCount == nDelay * (n + 30)) {
-    
+    playSample(3);
   } else if (frameCount == nDelay * (n + 40)) {
+    playSample(4);
   }
-
-  //print(frameCount);
 }
 
 void playSample(int index) {
   String brandName = cs.charts.get(index).brand;
-  //if (brandName.equals("gucci") && cs.charts.get(index).highlight == true) {
-  //  ssupreme.trigger(); 
-
-  //  cs.charts.get(index).highlight = false;
-  //  //}
-  //}
-
-  switch(brandName) {
-  case "gucci":
-    println("playSample: " + brandName);
-    if (cs.charts.get(index).highlight == true) {
-      sgucci.trigger();
-      cs.charts.get(index).highlight = false;
-    }
-    break;
-  case "louis vuitton":
-    println("playSample: " + brandName);
-    if (cs.charts.get(index).highlight == true) {
-      slouisvuitton.trigger();
-      cs.charts.get(index).highlight = false;
-    }
-    break;
-  case "yves saint laurent":
-    println("playSample: " + brandName);
-    if (cs.charts.get(index).highlight == true) {
-      sysl.trigger();
-      cs.charts.get(index).highlight = false;
-    }
-    break;
+  if (samples.get(brandName) != null) {
+    println("playing: " + brandName);
+    samples.get(brandName).trigger();
+    cs.charts.get(index).highlight = false;
   }
 }
 
