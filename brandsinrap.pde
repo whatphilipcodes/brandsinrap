@@ -25,6 +25,8 @@ int startYear = 2010;
 int iterationMax = 12;
 int Delay = 180; // Set animation delay here
 
+boolean lastIMG = false;
+
 void setup() {
   maskData = new ArrayList<PGraphics>();
   systems = new ArrayList<ChartSystem>();
@@ -37,7 +39,7 @@ void draw() {
 
 void mousePressed() {
   maskData.clear();
-  background(0);
+  //background(0);
   if (systems.size() != 0) systems.remove(0);
   systems.add(new ChartSystem(0,0,millis()));
   if (systemIteration == iterationMax) {

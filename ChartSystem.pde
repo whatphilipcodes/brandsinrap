@@ -21,8 +21,17 @@ class ChartSystem {
     isY = initIsY();
     initMasksArray();
     timer = t;
-
-    testIMG = loadImage("testIMG.jpg"); //TESTING
+    
+    String title;
+    if (lastIMG == true) {
+      title = "testIMG";
+      lastIMG = false;
+    } else {
+      title = "testIMG02";
+      lastIMG = true;
+    }
+    
+    testIMG = loadImage(title + ".jpg"); //TESTING
     testIMG.resize(width, height); //TESTING
   }
 
