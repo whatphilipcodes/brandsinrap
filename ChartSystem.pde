@@ -22,6 +22,7 @@ class ChartSystem {
     initMasksArray();
     timer = t;
     
+    //TESTING
     String title;
     if (lastIMG == true) {
       title = "testIMG";
@@ -37,7 +38,7 @@ class ChartSystem {
 
   // Runs the animation; this needs to sit in the draw() loop
   void run () {
-    if ((chartIndex < propData.length) && (millis() > timer + chartIndex * Delay)) {
+    if ((chartIndex < propData.length) && (millis() > timer + chartIndex * barDelay)) {
       systems.get(0).addBar();
     }
 

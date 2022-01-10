@@ -28,3 +28,17 @@ void loadData(int year, int limit) {
     propData[i] = propData[i]/sum;
   }
 }
+
+void nextYear() {
+  int iterationMax = endYear - startYear;
+  maskData.clear();
+  //background(0);
+  if (systems.size() != 0) systems.remove(0);
+  systems.add(new ChartSystem(0,0,millis()));
+  if (systemIteration == iterationMax) {
+    systemIteration = 0;
+  } else {
+    systemIteration++;
+  }
+  animDone = false;
+}

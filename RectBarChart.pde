@@ -17,6 +17,7 @@ class RectBarChart {
 
   // Constructor
   RectBarChart(PVector origin, boolean Y, int cID, PVector growth) {
+    animDone = false;
     chartIndex = cID;
     P = origin;
     isY = Y;
@@ -94,6 +95,7 @@ class RectBarChart {
       if (prox <= mergeThresh) {
         Verts.set(1, Verts.get(4));
         Verts.set(2, Verts.get(5));
+        animDone = true;
       } else {
         // Q -> targetQ
         newQx = lerp(Verts.get(1).x, Verts.get(4).x, lerpSpeed); // Lerp x-coordinate
@@ -118,6 +120,7 @@ class RectBarChart {
       if (prox <= mergeThresh) {
         Verts.set(2, Verts.get(4));
         Verts.set(3, Verts.get(5));
+        animDone = true;
       } else {
         // R -> targetR
         newRx = lerp(Verts.get(2).x, Verts.get(4).x, lerpSpeed); // Lerp x-coordinate
