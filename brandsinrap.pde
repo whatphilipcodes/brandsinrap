@@ -1,4 +1,11 @@
-// Gucci Gang by Philip Gerdes & Bernhard Hoffmann, supervised by Prof. Alexander Müller-Rakow //<>// //<>//
+import ddf.minim.*; //<>//
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
+// Gucci Gang by Philip Gerdes & Bernhard Hoffmann, supervised by Prof. Alexander Müller-Rakow //<>//
 import java.util.Calendar;
 import generativedesign.*;
 
@@ -43,7 +50,7 @@ PGraphics pgImg4;
 
 void settings() {
   size(resX, resY, P2D);
-  //fullScreen(2);
+  fullScreen(2);
   smooth(2);
 }
 //////////////////////////////////////
