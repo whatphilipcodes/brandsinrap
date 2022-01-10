@@ -13,11 +13,12 @@ int resY = int(screenResY * scaleFac);
 
 
 int maxNumberOfBrands = 5;
-//glitch
 boolean glitch = true;
+boolean printOnce = true;
+boolean debug = false;
 //1-3,50000  1,100000  10,1000
 //2, 50000
-int glitchIntensity = 2; //how displaced the glitches are (source and destination)
+int glitchIntensity = 4; //how displaced the glitches are (source and destination)
 int glitchInterations = 5000; //how many glitches per frame
 int glitchLength = 10; //how often the glitch method will run
 int glitchCount = 0;
@@ -28,6 +29,7 @@ PImage lv;
 PImage dior;
 PImage adidas;
 PImage[] brandImages = new PImage[maxNumberOfBrands];
+
 PGraphics mask0;
 PGraphics mask1;
 PGraphics mask2;
@@ -38,8 +40,6 @@ PGraphics pgImg1;
 PGraphics pgImg2;
 PGraphics pgImg3;
 PGraphics pgImg4;
-
-boolean debug = false;
 
 void settings() {
   size(resX, resY, P2D);
@@ -84,7 +84,7 @@ void initializeImagesMasksBrandnames() {
   for (TableRow row : data.rows()) {
     if (ii < maxNumberOfBrands) {
       String brandName = row.getString("Brand");
-      print("Brand " + ii + " :"  + brandName);
+      print("img " + ii + ": "  + brandName);
       cs.addBar(brandName, #A41AEB);
       brandImages[ii] = loadImage(brandName + ".jpg");
     }
@@ -133,9 +133,9 @@ void draw() {
   }
 
   if (maxNumberOfBrands > 0) drawMaskedPG(mask0, pgImg0, 0);
-  if (maxNumberOfBrands > 1)drawMaskedPG(mask1, pgImg1, 1);
+  if (maxNumberOfBrands > 1) drawMaskedPG(mask1, pgImg1, 1);
   if (maxNumberOfBrands > 2) drawMaskedPG(mask2, pgImg2, 2);
-  if (maxNumberOfBrands > 3)drawMaskedPG(mask3, pgImg3, 3);
+  if (maxNumberOfBrands > 3) drawMaskedPG(mask3, pgImg3, 3);
   if (maxNumberOfBrands > 4) drawMaskedPG(mask4, pgImg4, 4);
 }
 
@@ -146,7 +146,9 @@ void drawMaskedPG(PGraphics pmask, PGraphics pimg, int index) {
   pmask.endDraw();
   pimg.mask(pmask);
   image(pimg, 0, 0);
-  println("Brand " + index + ": " + cs.charts.get(index).brand);
+  if(debug) {
+    println("brand " + index + ": " + cs.charts.get(index).brand);
+  }
 }
 
 void render(PGraphics pimg) {
