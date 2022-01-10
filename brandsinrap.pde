@@ -1,4 +1,5 @@
 // Gucci Gang by Philip Gerdes & Bernhard Hoffmann, supervised by Prof. Alexander Müller-Rakow //<>// //<>//
+//Brandnames in rapmusic from 2016-2020
 import java.util.Calendar;
 import generativedesign.*;
 import java.util.Map;
@@ -17,7 +18,7 @@ Sampler slouisvuitton;
 Sampler sysl;
 Sampler snike;
 Sampler ssupreme;
-HashMap<String, Sampler> samples = new HashMap<String, Sampler>();
+HashMap<String, SampleMap> samplesYears = new HashMap <String, SampleMap>();
 
 // SCREEN SETUP //////////////////////
 int screenResX = 1080;
@@ -101,12 +102,18 @@ void setup() {
   slouisvuitton.patch(out);
   sysl.patch(out);
   snike.patch(out);
-  //put in hashmap
-  samples.put("gucci", sgucci);
-  samples.put("supreme", ssupreme);
-  samples.put("louis vuitton", slouisvuitton);
-  samples.put("yves saint laurent", sysl);
-  samples.put("nike", snike);
+  //put in maps
+  SampleMap samples2019 = new SampleMap();
+  samples2019.samples.put("gucci", sgucci);
+  samplesYears.put("2019", samples2019);
+  
+  
+  
+  //samples.put("gucci", sgucci);
+  //samples.put("supreme", ssupreme);
+  //samples.put("louis vuitton", slouisvuitton);
+  //samples.put("yves saint laurent", sysl);
+  //samples.put("nike", snike);
 }
 
 void initializePGraphicsImage(PGraphics pg, PImage pi) {
@@ -191,11 +198,12 @@ void draw() {
   }
 }
 
+//get samplers from brandname, trigger sample, set highlight boo in chart false
 void playSample(int index) {
   String brandName = cs.charts.get(index).brand;
-  if (samples.get(brandName) != null) {
+  if (samplesYears.get("2019").samples.get(brandName) != null) {
     println("playing: " + brandName);
-    samples.get(brandName).trigger();
+    samplesYears.get("2019").samples.get(brandName).trigger();
     cs.charts.get(index).highlight = false;
   }
 }
