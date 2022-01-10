@@ -13,9 +13,14 @@ boolean initIsY() {
 }
 
 // Outputs target Area at index iteration
-float calcTargetA() {
+float calcTargetA(int chartIndex) {
   float totalA = width * height;
-  float targetA = totalA * propData[bIndex];
-  bIndex = bIndex + 1;
+  float targetA = totalA * propData[chartIndex];
   return targetA;
 }
+
+void initMasksArray() {
+    for (int i = 0; i < propData.length; i++) {
+      maskData.add(createGraphics(width,height));
+    }
+  }

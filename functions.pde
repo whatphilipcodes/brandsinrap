@@ -1,8 +1,9 @@
-// This projects main seperate function(s)
+// This projects main separate function(s)
 
-void loadData(String year, int limit) {
-  
-  Table data = loadTable(year+".csv", "header");
+void loadData(int year, int limit) {
+
+  Table data = loadTable(year + ".csv", "header");
+  println(year);
   int dataLength = 0;
 
   // Compute data length
@@ -11,9 +12,9 @@ void loadData(String year, int limit) {
       dataLength++;
     }
   }
-  
+
   propData = new float [dataLength];
-  
+
   for (int i = 0; i < dataLength; i++) {
     propData[i] = data.getFloat(i, "Count");
   }
@@ -26,6 +27,4 @@ void loadData(String year, int limit) {
   for (int i = 0; i < dataLength; i++) {
     propData[i] = propData[i]/sum;
   }
-  
-  countBars = dataLength;
 }

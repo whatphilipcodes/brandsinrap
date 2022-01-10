@@ -1,4 +1,4 @@
-// "brandnames in rap music" by Philip Gerdes & Bernhard Hoffmann, supervised by Prof. Alexander Müller-Rakow
+// "brandnames in rap music" by Philip Gerdes & Bernhard Hoffmann, supervised by Prof. Alexander Müller-Rakow //<>//
 
 // SCREEN SETUP //////////////////////
 int screenResX = 1080;
@@ -16,33 +16,33 @@ void settings() {
 //////////////////////////////////////
 
 // Global Variables
-ChartSystem cs; // Stores the complete system of charts
 float [] propData; // Stores converted proportional values from the data csv
 ArrayList<PGraphics> maskData; // Stores individual masks for every brand on current table
+ArrayList<ChartSystem> systems;
+int systemIteration;
 
-int bIndex = 0;
-int countBars;
-int amtBars = 0;
-
-float totalXGrowth;
-float totalYGrowth;
-
-int nDelay = 20;
-int n = 1;
+int startYear = 2010;
+int iterationMax = 12;
+int Delay = 180; // Set animation delay here
 
 void setup() {
-  loadData("2021", 5);
   maskData = new ArrayList<PGraphics>();
-  cs = new ChartSystem(0, 0);
+  systems = new ArrayList<ChartSystem>();
   background(0);
 }
 
 void draw() {
-  println(frameRate);
-  if ((frameCount == nDelay * n) && (amtBars < countBars)) {
-    cs.addBar();
-    amtBars++;
-    n++;
+  if (systems.size() != 0) systems.get(0).run();
+}
+
+void mousePressed() {
+  maskData.clear();
+  background(0);
+  if (systems.size() != 0) systems.remove(0);
+  systems.add(new ChartSystem(0,0,millis()));
+  if (systemIteration == iterationMax) {
+    systemIteration = 0;
+  } else {
+    systemIteration++;
   }
-  cs.run();
 }

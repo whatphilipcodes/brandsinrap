@@ -4,42 +4,50 @@ class ChartSystem {
   // Local object variabes
   ArrayList<RectBarChart> charts;
   PVector currentOr;
+  PVector growth;
   boolean isY;
-  
+  int timer;
+
   int chartIndex = 0;
 
-  ChartSystem(int x, int y) {
-    currentOr = new PVector(x, y);
+  PImage testIMG; //TESTING
+
+  // Constructor
+  ChartSystem(int x, int y, int t) {
     charts = new ArrayList<RectBarChart>();
+    currentOr = new PVector(x, y);
+    growth = new PVector(0, 0);
+    loadData((startYear + systemIteration), 5);
     isY = initIsY();
+    initMasksArray();
+    timer = t;
+
+    testIMG = loadImage("testIMG.jpg"); //TESTING
+    testIMG.resize(width, height); //TESTING
   }
 
-  void addBar () {
-    charts.add(new RectBarChart(currentOr, isY, chartIndex));
-    RectBarChart rbc = charts.get(chartIndex);
-    rbc.initCoords();
-    rbc.targetCoords();
-    currentOr = rbc.newOrigin();
-    isY = !isY;
-    
-    maskData.add(new PGraphics());
-    chartIndex++;
-  }
-
+  // Runs the animation; this needs to sit in the draw() loop
   void run () {
+    if ((chartIndex < propData.length) && (millis() > timer + chartIndex * Delay)) {
+      systems.get(0).addBar();
+    }
+
     for (int i = charts.size()-1; i >= 0; i--) {
       RectBarChart rbc = charts.get(i);
       rbc.morph(0.03, 0.1);
-      rbc.createMask();
-      rbc.drawTest();
+      rbc.createMaskShape();
+      rbc.drawTest(testIMG);
     }
   }
 
-  void reset () {
-    bIndex = 0;
-    totalXGrowth = 0;
-    totalYGrowth = 0;
-    amtBars = 0;
-    n = 1;
+  // Creates new RectBarChart object
+  void addBar () {
+    charts.add(new RectBarChart(currentOr, isY, chartIndex, growth));
+    RectBarChart rbc = charts.get(chartIndex);
+    rbc.initCoords();
+    growth.add(rbc.targetCoords());
+    currentOr = rbc.newOrigin();
+    chartIndex++;
+    isY = !isY;
   }
 }
