@@ -3,25 +3,20 @@
 class ChartSystem {
   // Local object variabes
   ArrayList<RectBarChart> charts;
-  PGraphics maskBuffer;
   PVector currentOr;
   PVector growth;
   boolean isY;
   int timer;
 
   int chartIndex = 0;
-  
-  PImage testIMG; //TESTING
 
 // Constructor
   ChartSystem(int x, int y, int t) {
     charts = new ArrayList<RectBarChart>();
-    maskBuffer = createGraphics(width, height);
     loadData((startYear + systemIteration), 5);
     currentOr = new PVector(x, y);
     growth = new PVector(0, 0);
     isY = initIsY();
-    initMskArray();
     timer = t;
     
     // Glitch stored images
@@ -41,8 +36,9 @@ class ChartSystem {
     for (int i = 0; i < charts.size(); i++) {
       RectBarChart rbc = charts.get(i);
       rbc.morph(0.03, 0.1);
-      rbc.createMaskShape(maskBuffer);
-      rbc.drawMaskedRep(i);
+      rbc.createMaskShape(maskBuffer[i]);
+      brandRep[i].mask(maskBuffer[i]);
+      image(brandRep[i],0,0);
     }
   }
 

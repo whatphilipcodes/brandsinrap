@@ -147,7 +147,7 @@ class RectBarChart {
     mask = createShape();
     mask.beginShape();
     mask.noStroke();
-    mask.fill(255);
+    mask.fill(255); // Area that is visible after masking ( -> white)
     mask.vertex(Verts.get(0).x, Verts.get(0).y);
     mask.vertex(Verts.get(1).x, Verts.get(1).y);
     mask.vertex(Verts.get(2).x, Verts.get(2).y);
@@ -157,13 +157,5 @@ class RectBarChart {
     pg.beginDraw();
     pg.shape(mask, 0, 0);
     pg.endDraw();
-    maskData.set(chartIndex, pg);
-    //println("maskData stores " + maskData.size() + " entries");
-  }
-  
-  // Masks buffered images and draws them to the canvas
-  void drawMaskedRep(int i) {
-      brandRep[i].mask(maskData.get(i));
-      image(brandRep[i], 0, 0);
   }
 }

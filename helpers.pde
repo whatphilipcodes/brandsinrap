@@ -18,10 +18,3 @@ float calcTargetA(int chartIndex) {
   float targetA = totalA * propData[chartIndex];
   return targetA;
 }
-
-void initMskArray() {
-    for (int i = 0; i < brandRep.length; i++) {
-      maskData.add(createGraphics(width,height));
-    }
-    //println(maskData.size());
-  }

@@ -15,10 +15,12 @@ void loadData(int year, int limit) {
 
   propData = new float [dataLength];
   brandRep = new PImage [dataLength];
+  maskBuffer = new PGraphics [dataLength];
 
   for (int i = 0; i < dataLength; i++) {
     propData[i] = data.getFloat(i, "Count");
     brandRep[i] = loadImage("brandRep/" + data.getString(i, "Brand") + ".jpg");
+    maskBuffer[i] = createGraphics(width, height);
   }
 
   // Calculate sum of all frequencies
@@ -33,8 +35,7 @@ void loadData(int year, int limit) {
 
 void nextYear() {
   int iterationMax = endYear - startYear;
-  maskData.clear();
-  //background(0);
+  //maskData.clear();
   if (systems.size() != 0) systems.remove(0);
   systems.add(new ChartSystem(0,0,millis()));
   if (systemIteration == iterationMax) {
