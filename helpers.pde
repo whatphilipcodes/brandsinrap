@@ -19,8 +19,9 @@ float calcTargetA(int chartIndex) {
   return targetA;
 }
 
-void initMasksArray() {
-    for (int i = 0; i < propData.length; i++) {
+void initMskArray() {
+    for (int i = 0; i < brandRep.length; i++) {
       maskData.add(createGraphics(width,height));
     }
+    //println(maskData.size());
   }

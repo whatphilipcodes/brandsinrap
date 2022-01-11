@@ -11,21 +11,16 @@ class RectBarChart {
   boolean isY;
   PVector P;
   
-  PGraphics pg;
-  
   int chartIndex;
 
   // Constructor
   RectBarChart(PVector origin, boolean Y, int cID, PVector growth) {
+    lastXGrowth = growth.x;
+    lastYGrowth = growth.y;
     animDone = false;
     chartIndex = cID;
     P = origin;
     isY = Y;
-    lastXGrowth = growth.x;
-    lastYGrowth = growth.y;
-
-    pg = createGraphics(width, height);
-  
   }
 
   // Sets up initial coordinates
@@ -69,7 +64,7 @@ class RectBarChart {
       return new PVector(0, offset);
       
     } else {
-      PVector PQ = PVector.sub(Verts.get(1), P); //FEHLER HIER??? // Vektor AB -> B.x - A.x, B.y - A.y...? FIXED!
+      PVector PQ = PVector.sub(Verts.get(1), P);
       offset = targetA / PQ.mag();
       // targetR index 4
       Verts.add(new PVector(P.x + offset, Verts.get(1).y));
@@ -148,7 +143,7 @@ class RectBarChart {
   }
   
   // Translates vertices into mask (PGraphics)
-  void createMaskShape() {
+  void createMaskShape(PGraphics pg) {
     mask = createShape();
     mask.beginShape();
     mask.noStroke();
@@ -163,11 +158,12 @@ class RectBarChart {
     pg.shape(mask, 0, 0);
     pg.endDraw();
     maskData.set(chartIndex, pg);
+    //println("maskData stores " + maskData.size() + " entries");
   }
-
-  // Testfunction to make masks visible without testinput
-  void drawTest(PImage testIMG) {
-    testIMG.mask(maskData.get(chartIndex));
-    image(testIMG, 0, 0);
+  
+  // Masks buffered images and draws them to the canvas
+  void drawMaskedRep(int i) {
+      brandRep[i].mask(maskData.get(i));
+      image(brandRep[i], 0, 0);
   }
 }

@@ -3,37 +3,33 @@
 class ChartSystem {
   // Local object variabes
   ArrayList<RectBarChart> charts;
+  PGraphics maskBuffer;
   PVector currentOr;
   PVector growth;
   boolean isY;
   int timer;
 
   int chartIndex = 0;
-
+  
   PImage testIMG; //TESTING
 
-  // Constructor
+// Constructor
   ChartSystem(int x, int y, int t) {
     charts = new ArrayList<RectBarChart>();
+    maskBuffer = createGraphics(width, height);
+    loadData((startYear + systemIteration), 5);
     currentOr = new PVector(x, y);
     growth = new PVector(0, 0);
-    loadData((startYear + systemIteration), 5);
     isY = initIsY();
-    initMasksArray();
+    initMskArray();
     timer = t;
     
-    //TESTING
-    String title;
-    if (lastIMG == true) {
-      title = "testIMG";
-      lastIMG = false;
-    } else {
-      title = "testIMG02";
-      lastIMG = true;
+    // Glitch stored images
+    for (int i = 0; i < brandRep.length; i++) {
+      brandRep[i].resize(width + rimMargin, height + rimMargin);
+      brandRep[i] = glitch(brandRep[i]);
+      brandRep[i].resize(width, height);
     }
-    
-    testIMG = loadImage(title + ".jpg"); //TESTING
-    testIMG.resize(width, height); //TESTING
   }
 
   // Runs the animation; this needs to sit in the draw() loop
@@ -42,11 +38,11 @@ class ChartSystem {
       systems.get(0).addBar();
     }
 
-    for (int i = charts.size()-1; i >= 0; i--) {
+    for (int i = 0; i < charts.size(); i++) {
       RectBarChart rbc = charts.get(i);
       rbc.morph(0.03, 0.1);
-      rbc.createMaskShape();
-      rbc.drawTest(testIMG);
+      rbc.createMaskShape(maskBuffer);
+      rbc.drawMaskedRep(i);
     }
   }
 
