@@ -37,7 +37,7 @@ void nextYear() {
   int iterationMax = endYear - startYear;
   //maskData.clear();
   if (systems.size() != 0) systems.remove(0);
-  systems.add(new ChartSystem(0,0,millis()));
+  systems.add(new ChartSystem(0,0));
   if (systemIteration == iterationMax) {
     systemIteration = 0;
   } else {

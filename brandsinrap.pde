@@ -26,13 +26,13 @@ boolean animDone;
 // SETTINGS
 int startYear = 2016; // First year to be displayed (check csv folder)
 int endYear = 2020;// Lsst year to be displayed (check csv folder)
-int barDelay = 180; // Set delay between individual bars here
+int barDelay = 250; // Set delay between individual bars here
 //int iterDelay = 200; // Set delay between system iterations here
 
 int glitchIntensity = 5; // How displaced the glitches are (source and destination)
 int glitchAmount = 10000; // How many glitches per iteration
 int glitchIterations = 10000; // How often the glitch method will run each iteration
-int rimMargin = 100; // Crops uneven sides
+int rimMargin = 0; // Crops uneven sides
 
 void setup() {
   systems = new ArrayList<ChartSystem>();

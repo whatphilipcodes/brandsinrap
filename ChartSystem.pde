@@ -11,13 +11,12 @@ class ChartSystem {
   int chartIndex = 0;
 
 // Constructor
-  ChartSystem(int x, int y, int t) {
+  ChartSystem(int x, int y) {
     charts = new ArrayList<RectBarChart>();
     loadData((startYear + systemIteration), 5);
     currentOr = new PVector(x, y);
     growth = new PVector(0, 0);
     isY = initIsY();
-    timer = t;
     
     // Glitch stored images
     for (int i = 0; i < brandRep.length; i++) {
@@ -25,6 +24,7 @@ class ChartSystem {
       brandRep[i] = glitch(brandRep[i]);
       brandRep[i].resize(width, height);
     }
+    timer = millis();
   }
 
   // Runs the animation; this needs to sit in the draw() loop
