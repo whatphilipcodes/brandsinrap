@@ -1,5 +1,5 @@
 // Gucci Gang by Philip Gerdes & Bernhard Hoffmann, supervised by Prof. Alexander Müller-Rakow //<>// //<>//
-//Brandnames in rapmusic from 2016-2020
+//brandnames in rapmusic from 2016-2020
 import java.util.Calendar;
 import generativedesign.*;
 import java.util.Map;
@@ -174,7 +174,7 @@ void draw() {
     if (maxNumberOfBrands > 3) drawMaskedPG(mask3, pgImg3, 3);
     if (maxNumberOfBrands > 4) drawMaskedPG(mask4, pgImg4, 4);
     
-    //highlight charts & play samples
+    //play samples
     if (frameCount == nDelay * n) {
         playSample(0);
     } else if (frameCount == nDelay * (n + 10)) {
