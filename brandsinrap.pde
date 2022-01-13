@@ -11,7 +11,7 @@ int resY = int(screenResY * scaleFac);
 
 void settings() {
   size(resX, resY);
-  //fullScreen(2);
+  //fullScreen(1);
 }
 //////////////////////////////////////
 
@@ -27,13 +27,11 @@ boolean animDone;
 // SETTINGS
 int startYear = 2016; // First year to be displayed (check csv folder)
 int endYear = 2020;// Lsst year to be displayed (check csv folder)
-int barDelay = 500; // Set delay between individual bars here
-//int iterDelay = 200; // Set delay between system iterations here
+int barDelay = 400; // Set delay between individual bars here
 
-int glitchIntensity = 3; // How displaced the glitches are (source and destination)
-int glitchAmount = 5000; // How many glitches per iteration
+int glitchIntensity = 2; // How displaced the glitches are (source and destination)
+int glitchAmount = 80000; // How many glitches per iteration
 int glitchIterations = 10000; // How often the glitch method will run each iteration
-//int rimMargin = 0; // Crops uneven sides
 
 void setup() {
   systems = new ArrayList<ChartSystem>();
@@ -44,6 +42,7 @@ void setup() {
 void draw() {
   if (systems.size() != 0) systems.get(0).run();
   if (animDone == true) nextYear();
+  //println(frameRate);
 }
 
 ///////////////////////////////////////////////////////////////////////////

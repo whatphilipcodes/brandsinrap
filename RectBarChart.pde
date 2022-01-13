@@ -17,7 +17,6 @@ class RectBarChart {
   RectBarChart(PVector origin, boolean Y, int cID, PVector growth) {
     lastXGrowth = growth.x;
     lastYGrowth = growth.y;
-    animDone = false;
     chartIndex = cID;
     P = origin;
     isY = Y;
@@ -77,7 +76,7 @@ class RectBarChart {
   }
 
   // Animates the vertex data
-  void morph(float lerpSpeed, float mergeThresh) {
+  boolean morph(float lerpSpeed, float mergeThresh) {
     if (isY == true) {
       float newQx = 0;
       float newQy = 0;
@@ -90,7 +89,7 @@ class RectBarChart {
       if (prox <= mergeThresh) {
         Verts.set(1, Verts.get(4));
         Verts.set(2, Verts.get(5));
-        animDone = true;
+        return true;
       } else {
         // Q -> targetQ
         newQx = lerp(Verts.get(1).x, Verts.get(4).x, lerpSpeed); // Lerp x-coordinate
@@ -102,6 +101,7 @@ class RectBarChart {
 
         Verts.set(1, new PVector(newQx, newQy));
         Verts.set(2, new PVector(newRx, newRy));
+        return false;
       }
     } else {
       float newRx = 0;
@@ -115,7 +115,7 @@ class RectBarChart {
       if (prox <= mergeThresh) {
         Verts.set(2, Verts.get(4));
         Verts.set(3, Verts.get(5));
-        animDone = true;
+        return true;
       } else {
         // R -> targetR
         newRx = lerp(Verts.get(2).x, Verts.get(4).x, lerpSpeed); // Lerp x-coordinate
@@ -127,6 +127,7 @@ class RectBarChart {
 
         Verts.set(2, new PVector(newRx, newRy));
         Verts.set(3, new PVector(newSx, newSy));
+        return false;
       }
     }
   }
