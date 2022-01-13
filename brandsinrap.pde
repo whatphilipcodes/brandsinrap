@@ -4,14 +4,14 @@
 int screenResX = 1080;
 int screenResY = 1920;
 
-float scaleFac = 1;
+float scaleFac = 0.5;
 
 int resX = int(screenResX * scaleFac);
 int resY = int(screenResY * scaleFac);
 
 void settings() {
   size(resX, resY);
-  //fullScreen(1);
+  //fullScreen(2);
 }
 //////////////////////////////////////
 
@@ -28,7 +28,8 @@ boolean animDone;
 int startYear = 2016; // First year to be displayed (check csv folder)
 int endYear = 2020;// Lsst year to be displayed (check csv folder)
 int barDelay = 800; // Set delay between individual bars here
-float animSpeed = 0.05; // Controls lerp animation speed
+float animSpeed = 0.06; // Controls lerp animation speed
+String imgVariant = "one"; // Which variant should be displayed? ("one" or "two")
 
 int glitchIntensity = 3; // How displaced the glitches are (source and destination)
 int glitchAmount = 80000; // How many glitches per iteration
@@ -70,7 +71,7 @@ void loadData(int year, int limit) {
 
   for (int i = 0; i < dataLength; i++) {
     propData[i] = data.getFloat(i, "Count");
-    brandImg[i] = loadImage("brandRep/" + data.getString(i, "Brand") + ".jpg");
+    brandImg[i] = loadImage("brands_"+imgVariant+"/" + data.getString(i, "Brand") + ".jpg");
     glitchPGs[i] = createGraphics(width, height);
     maskPGs[i] = createGraphics(width, height);
   }

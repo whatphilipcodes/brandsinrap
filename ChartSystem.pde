@@ -38,7 +38,7 @@ class ChartSystem {
     for (int i = 0; i < charts.size(); i++) {
       if (status[i] == false) {
         RectBarChart rbc = charts.get(i);
-        status[i] = rbc.morph(animSpeed, 0.9);
+        status[i] = rbc.morph(animSpeed, 0.99);
         rbc.createMaskShape(maskPGs[i]);
         glitchPGs[i].mask(maskPGs[i]);
         image(glitchPGs[i], 0, 0);
