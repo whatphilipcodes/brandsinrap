@@ -19,10 +19,10 @@ class ChartSystem {
     isY = initIsY();
     
     // Glitch stored images
-    for (int i = 0; i < brandRep.length; i++) {
-      brandRep[i].resize(width + rimMargin, height + rimMargin);
-      brandRep[i] = glitch(brandRep[i]);
-      brandRep[i].resize(width, height);
+    for (int i = 0; i < brandImg.length; i++) {
+      brandImg[i].resize(width, height);
+      initializePGraphicsImage(glitchPGs[i], brandImg[i]);
+      //brandRep[i].resize(width, height);
     }
     timer = millis();
   }
@@ -36,9 +36,9 @@ class ChartSystem {
     for (int i = 0; i < charts.size(); i++) {
       RectBarChart rbc = charts.get(i);
       rbc.morph(0.03, 0.1);
-      rbc.createMaskShape(maskBuffer[i]);
-      brandRep[i].mask(maskBuffer[i]);
-      image(brandRep[i],0,0);
+      rbc.createMaskShape(maskPGs[i]);
+      glitchPGs[i].mask(maskPGs[i]);
+      image(glitchPGs[i],0,0);
     }
   }
 
