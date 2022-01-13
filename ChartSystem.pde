@@ -36,11 +36,13 @@ class ChartSystem {
     }
 
     for (int i = 0; i < charts.size(); i++) {
-      RectBarChart rbc = charts.get(i);
-      status[i] = rbc.morph(animSpeed, 0.1);
-      rbc.createMaskShape(maskPGs[i]);
-      glitchPGs[i].mask(maskPGs[i]);
-      image(glitchPGs[i], 0, 0);
+      if (status[i] == false) {
+        RectBarChart rbc = charts.get(i);
+        status[i] = rbc.morph(animSpeed, 0.9);
+        rbc.createMaskShape(maskPGs[i]);
+        glitchPGs[i].mask(maskPGs[i]);
+        image(glitchPGs[i], 0, 0);
+      }
     }
     animDone = checkStatus();
   }

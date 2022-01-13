@@ -4,14 +4,14 @@
 int screenResX = 1080;
 int screenResY = 1920;
 
-float scaleFac = 0.5;
+float scaleFac = 1;
 
 int resX = int(screenResX * scaleFac);
 int resY = int(screenResY * scaleFac);
 
 void settings() {
-  //size(resX, resY);
-  fullScreen(1);
+  size(resX, resY);
+  //fullScreen(1);
 }
 //////////////////////////////////////
 
@@ -27,8 +27,8 @@ boolean animDone;
 // SETTINGS
 int startYear = 2016; // First year to be displayed (check csv folder)
 int endYear = 2020;// Lsst year to be displayed (check csv folder)
-int barDelay = 400; // Set delay between individual bars here
-float animSpeed = 0.08; // Controls lerp animation speed
+int barDelay = 800; // Set delay between individual bars here
+float animSpeed = 0.05; // Controls lerp animation speed
 
 int glitchIntensity = 3; // How displaced the glitches are (source and destination)
 int glitchAmount = 80000; // How many glitches per iteration
