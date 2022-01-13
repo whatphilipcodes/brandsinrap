@@ -25,7 +25,6 @@ class ChartSystem {
     for (int i = 0; i < brandImg.length; i++) {
       brandImg[i].resize(width, height);
       initializePGraphicsImage(glitchPGs[i], brandImg[i]);
-      //brandRep[i].resize(width, height);
     }
     timer = millis();
   }
@@ -38,7 +37,7 @@ class ChartSystem {
 
     for (int i = 0; i < charts.size(); i++) {
       RectBarChart rbc = charts.get(i);
-      status[i] = rbc.morph(0.05, 0.1);
+      status[i] = rbc.morph(animSpeed, 0.1);
       rbc.createMaskShape(maskPGs[i]);
       glitchPGs[i].mask(maskPGs[i]);
       image(glitchPGs[i], 0, 0);
