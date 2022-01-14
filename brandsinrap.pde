@@ -12,6 +12,7 @@ import ddf.minim.ugens.*;
 //Minim Sound Libary
 Minim minim;
 AudioOutput out;
+
 // SCREEN SETUP //////////////////////
 int screenResX = 1080;
 int screenResY = 1920;
@@ -152,5 +153,3 @@ void glitch(PGraphics pg) {
         glitchCount++;
     }
 }
-
-
