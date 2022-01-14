@@ -27,12 +27,12 @@ boolean animDone;
 // SETTINGS
 int startYear = 2015; // First year to be displayed (check csv folder)
 int endYear = 2020;// Lsst year to be displayed (check csv folder)
-int barDelay = 1200; // Set delay between individual bars here
+int barDelay = 1400; // Set delay between individual bars here
 float animSpeed = 0.06; // Controls lerp animation speed
 String imgVariant = "two"; // Which variant should be displayed? ("one" or "two")
 
 int glitchIntensity = 2; // How displaced the glitches are (source and destination)
-int glitchAmount = 100000; // How many glitches per iteration
+int glitchAmount = 80000; // How many glitches per iteration
 int glitchIterations = 10000; // How often the glitch method will run each iteration
 
 void setup() {
