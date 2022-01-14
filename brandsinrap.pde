@@ -10,8 +10,8 @@ int resX = int(screenResX * scaleFac);
 int resY = int(screenResY * scaleFac);
 
 void settings() {
-  size(resX, resY);
-  //fullScreen(1);
+  //size(resX, resY);
+  fullScreen(1);
 }
 //////////////////////////////////////
 
@@ -25,20 +25,21 @@ int systemIteration;
 boolean animDone;
 
 // SETTINGS
-int startYear = 2016; // First year to be displayed (check csv folder)
+int startYear = 2015; // First year to be displayed (check csv folder)
 int endYear = 2020;// Lsst year to be displayed (check csv folder)
-int barDelay = 800; // Set delay between individual bars here
+int barDelay = 1200; // Set delay between individual bars here
 float animSpeed = 0.06; // Controls lerp animation speed
 String imgVariant = "two"; // Which variant should be displayed? ("one" or "two")
 
-int glitchIntensity = 3; // How displaced the glitches are (source and destination)
-int glitchAmount = 80000; // How many glitches per iteration
+int glitchIntensity = 2; // How displaced the glitches are (source and destination)
+int glitchAmount = 100000; // How many glitches per iteration
 int glitchIterations = 10000; // How often the glitch method will run each iteration
 
 void setup() {
   systems = new ArrayList<ChartSystem>();
   animDone = true;
   background(0);
+  noCursor();
 }
 
 void draw() {
