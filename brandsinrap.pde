@@ -12,7 +12,6 @@ import ddf.minim.ugens.*;
 //Minim Sound Libary
 Minim minim;
 AudioOutput out;
-//HashMap<int, SampleMap> samplesYears = new HashMap <int, SampleMap>();
 // SCREEN SETUP //////////////////////
 int screenResX = 1080;
 int screenResY = 1920;
@@ -51,7 +50,8 @@ int glitchIterations = 10000; // How often the glitch method will run each itera
 void setup() {
     systems = new ArrayList<ChartSystem>();
     animDone = true;
-    initializeSoundFiles();
+    minim = new Minim(this);
+    out = minim.getLineOut();
     background(0);
     noCursor();
 }
@@ -65,35 +65,6 @@ void draw() {
 ///////////////////////////////////////////////////////////////////////////
 // This projects main separate function(s)
 
-void initializeSoundFiles() {
-    minim = new Minim(this);
-    out = minim.getLineOut();
-    //create SmapleMaps
-    //SampleMap samples2016 = new SampleMap("2016");
-    //samplesYears.put("2016", samples2016);
-    
-    //SampleMap samples2017 = new SampleMap("2017");
-    //samplesYears.put("2017", samples2017);
-    
-    //SampleMap samples2018 = new SampleMap("2018");
-    //samplesYears.put("2018", samples2018);
-    
-    // SampleMap samples2019 = new SampleMap("2019");
-    // samplesYears.put("2019", samples2019);
-    
-    //SampleMap samples2020 = new SampleMap("2020");
-    //samplesYears.put("2020", samples2020);
-}
-
-//get samplers from brandname, trigger sample, set highlight bool in chart false
-// void playSample(int index) {
-//     String brandName = cs.charts.get(index).brand;
-//     if (samplesYears.get("2019").samples.get(brandName) != null) {
-//         println("playing: " + brandName);
-//         samplesYears.get("2019").samples.get(brandName).trigger();
-//         cs.charts.get(index).highlight = false;
-//     }
-// }
 
 String[] loadData(int year, int limit) {
     

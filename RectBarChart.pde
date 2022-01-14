@@ -10,6 +10,7 @@ class RectBarChart {
   PShape mask;
   boolean isY;
   PVector P;
+  boolean played = false;
   
   int chartIndex;
 

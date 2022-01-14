@@ -1,16 +1,12 @@
-//contains minium samplers, loads them, put them in a HashMap samples
+//contains minium samplers, loads them and put them in a HashMap samples
 public class SampleMap {
     
     private HashMap<String, Sampler> samples = new HashMap<String, Sampler>();
     private String samplesPath;
-    private Sampler gucci;
-    private Sampler louisvuitton;
-    private Sampler ysl;
-    private Sampler nike;
-    private Sampler supreme;
-        
-    SampleMap(int year, String[] brandNames) {      
-        
+    private String[] sampleNames;
+    
+    SampleMap(int year, String[] brandNames) {    
+        sampleNames = brandNames;
         //check if datapath exists
         samplesPath = dataPath("samples" + year + "/");
         File dir = new File(samplesPath);
@@ -18,11 +14,16 @@ public class SampleMap {
             System.out.println("sample directory missing for year: " + year);
             //System.exit(0);
         } else {
-            //load all samples create samplers and push them in HashMap samples
+            //create samplers, load samples and put them in HashMap samples
             for (int i = 0; i < brandNames.length; i++) {
                 String brandName = brandNames[i];
                 String path = samplesPath + "/" + brandName + ".aif";
-                samples.put(brandName, new Sampler(path, 1, minim));
+                if (!new File(path).exists()) {
+                    System.out.println("sample missing for " + brandName);
+                    //System.exit(0);
+                } else {
+                    samples.put(brandName, new Sampler(path, 1, minim));
+                }
             }
             patchSamplers(samples);
         }
@@ -34,5 +35,15 @@ public class SampleMap {
         }
     }
     
+    //play sample 
+    public void playSample(int brandNameIndex) {
+        String brandName = sampleNames[brandNameIndex];
+        if (samples.get(brandName) != null) {
+            println("playing sample: " + brandName);
+            samples.get(brandName).trigger();
+        } else {
+            //println("sample not found: " + brandName);
+        }
+    }
 }
 

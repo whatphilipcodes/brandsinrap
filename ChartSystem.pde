@@ -33,7 +33,7 @@ class ChartSystem {
             initializePGraphicsImage(glitchPGs[i], brandImg[i]);
         }
         timer = millis();
-}
+    }
     
     //Runs the animation; this needs to sit in the draw() loop
     void run() {
@@ -42,16 +42,23 @@ class ChartSystem {
         }
         
         for (int i = 0; i < charts.size(); i++) {
-           if (status[i] == false) {
+            if (status[i] == false) {
                 RectBarChart rbc = charts.get(i);
                 status[i] = rbc.morph(animSpeed, 0.99);
+                //play sample
+                if (rbc.played == false) {
+                    samplesMap.playSample(i);
+                    rbc.played = true;
+                }
+
                 rbc.createMaskShape(maskPGs[i]);
                 glitchPGs[i].mask(maskPGs[i]);
                 image(glitchPGs[i], 0, 0);
-        }
+                
+            }
         }
         animDone = checkStatus();
-}
+    }
     
     //Creates new RectBarChart object
     void addBar() {
@@ -62,13 +69,13 @@ class ChartSystem {
         currentOr = rbc.newOrigin();
         chartIndex++;
         isY = !isY;
-}
+    }
     
     boolean checkStatus() {
         for (int i = 0; i < status.length; ++i) {
             boolean b = status[i];
-           if (!b)  return false;
+            if (!b)  return false;
         }
         return true;
-}
+    }
 }
