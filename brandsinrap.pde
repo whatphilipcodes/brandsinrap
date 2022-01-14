@@ -11,7 +11,7 @@ int resY = int(screenResY * scaleFac);
 
 void settings() {
   size(resX, resY);
-  //fullScreen(2);
+  //fullScreen(1);
 }
 //////////////////////////////////////
 
@@ -29,7 +29,7 @@ int startYear = 2016; // First year to be displayed (check csv folder)
 int endYear = 2020;// Lsst year to be displayed (check csv folder)
 int barDelay = 800; // Set delay between individual bars here
 float animSpeed = 0.06; // Controls lerp animation speed
-String imgVariant = "one"; // Which variant should be displayed? ("one" or "two")
+String imgVariant = "two"; // Which variant should be displayed? ("one" or "two")
 
 int glitchIntensity = 3; // How displaced the glitches are (source and destination)
 int glitchAmount = 80000; // How many glitches per iteration
