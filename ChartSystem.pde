@@ -33,7 +33,6 @@ class ChartSystem {
             initializePGraphicsImage(glitchPGs[i], brandImg[i]);
         }
         timer = millis();
-        println("millis " + millis());
     }
     
     //load an image into PGraphics layer and distort it

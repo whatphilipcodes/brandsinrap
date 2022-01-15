@@ -117,6 +117,10 @@ String[] loadData(int year, int limit) {
 }
 
 void nextYear() {
+    //reset app if end year is reached
+    if (systems.size() != 0 && systems.get(0).chartSystemYear == endYear) {
+        frameCount = -1;
+    }
     int iterationMax = endYear - startYear;
     // maskData.clear();
     if (systems.size() != 0) systems.remove(0);
