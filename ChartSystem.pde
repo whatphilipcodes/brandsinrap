@@ -33,10 +33,41 @@ class ChartSystem {
             initializePGraphicsImage(glitchPGs[i], brandImg[i]);
         }
         timer = millis();
+        println("millis " + millis());
+    }
+    
+    //load an image into PGraphics layer and distort it
+    void initializePGraphicsImage(PGraphics pg, PImage pi) {
+        pg.beginDraw();
+        pg.background(0);
+        pg.image(pi, 0, 0, width, height);
+        glitch(pg);
+        pg.endDraw();
+    }
+    
+    // distort the image in the PGraphicslayer 
+    void glitch(PGraphics pg) {
+        int glitchCount = 0;
+        if (glitchCount < glitchIterations) {
+            for (int i = 0; i < glitchAmount; ++i) {
+                //source
+                int x1 = (int) random(0, width);
+                int y1 = (int) random(0, height);
+                //destination
+                int x2 = round(x1 + random( -glitchIntensity, glitchIntensity));
+                int y2 = round(y1 + random( -glitchIntensity, glitchIntensity));
+                //sizeofcopyblock
+                int w = round(random(50, 100));
+                int h = round(random(50, 100));
+                pg.copy(x1, y1, w, h, x2, y2, w, h);
+            }
+            glitchCount++;
+        }
     }
     
     //Runs the animation; this needs to sit in the draw() loop
     void run() {
+        //println("millis() > timer + chartIndex * barDelay "+ timer + chartIndex * barDelay);
         if ((chartIndex < propData.length) && (millis() > timer + chartIndex * barDelay)) {
             systems.get(0).addBar();
         }
@@ -50,7 +81,7 @@ class ChartSystem {
                     samplesMap.playSample(i);
                     rbc.played = true;
                 }
-
+                
                 rbc.createMaskShape(maskPGs[i]);
                 glitchPGs[i].mask(maskPGs[i]);
                 image(glitchPGs[i], 0, 0);
@@ -74,7 +105,7 @@ class ChartSystem {
     boolean checkStatus() {
         for (int i = 0; i < status.length; ++i) {
             boolean b = status[i];
-            if (!b)  return false;
+            if (!b) return false;
         }
         return true;
     }

@@ -19,7 +19,7 @@ public class SampleMap {
                 String brandName = brandNames[i];
                 String path = samplesPath + "/" + brandName + ".aif";
                 if (!new File(path).exists()) {
-                    System.out.println("sample missing for " + brandName);
+                    System.out.println("sample missing: " + brandName);
                     //System.exit(0);
                 } else {
                     samples.put(brandName, new Sampler(path, 1, minim));

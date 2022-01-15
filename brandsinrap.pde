@@ -1,5 +1,4 @@
 // "brandnames in rap music" by Philip Gerdes & Bernhard Hoffmann, supervised by Prof. Alexander Müller-Rakow // //<>//
-//brandnames in rapmusic from 2016-2020
 import java.util.Calendar;
 import generativedesign.*;
 import java.util.Map;
@@ -25,6 +24,7 @@ int resY = int(screenResY * scaleFac);
 void settings() {
     size(resX, resY);
     //fullScreen(1);
+    pixelDensity(2);
 }
 //////////////////////////////////////
 
@@ -36,6 +36,7 @@ PGraphics[] maskPGs; // Stores individual masks for every brand on current table
 ArrayList<ChartSystem> systems;
 int systemIteration;
 boolean animDone;
+PImage titleScreen;
 
 // SETTINGS
 int startYear = 2015; // First year to be displayed (check csv folder)
@@ -53,8 +54,11 @@ void setup() {
     animDone = true;
     minim = new Minim(this);
     out = minim.getLineOut();
+    titleScreen = loadImage("titleScreen.png");
     background(0);
     noCursor();
+    image(titleScreen, 0, 0, width, height);
+
 }
 
 void draw() {
@@ -125,31 +129,5 @@ void nextYear() {
     animDone = false;
 }
 
-//load an image into PGraphics layer and distort it
-void initializePGraphicsImage(PGraphics pg, PImage pi) {
-    pg.beginDraw();
-    pg.background(0);
-    pg.image(pi, 0, 0, width, height);
-    glitch(pg);
-    pg.endDraw();
-}
 
-//distort the image in the PGraphicslayer 
-void glitch(PGraphics pg) {
-    int glitchCount = 0;
-    if (glitchCount < glitchIterations) {
-        for (int i = 0; i < glitchAmount; ++i) {
-            //source
-            int x1 = (int) random(0, width);
-            int y1 = (int) random(0, height);
-            //destination
-            int x2 = round(x1 + random( -glitchIntensity, glitchIntensity));
-            int y2 = round(y1 + random( -glitchIntensity, glitchIntensity));
-            //sizeof copyblock
-            int w = round(random(50, 100));
-            int h = round(random(50, 100));
-            pg.copy(x1, y1, w, h, x2, y2, w, h);
-        }
-        glitchCount++;
-    }
-}
+
