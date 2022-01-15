@@ -217,13 +217,6 @@ def get_most_frequent_words_directory(directory_path):
     meaningful_words_tally = Counter()
     release_year_old = ""
 
-    # for filepath in Path(directory_path).glob('*.txt'):
-
-    #         full_text = open(filepath, encoding="utf-8").read()
-    #         all_the_words = split_into_words(full_text)
-    #         meaningful_words = [word for word in all_the_words if word not in stopwords]
-    #         meaningful_words_tally.update(meaningful_words)
-
     # join all txt files in subfolders to a single txt file
     for root, dirs, files in os.walk(directory_path):
         # print(*files, sep = "\n")
@@ -271,17 +264,10 @@ def get_most_frequent_words_directory(directory_path):
         for brand in words_counted_synonyms_year:
             brands_counted[real_names[brand]] += words_counted_synonyms_year.get(brand)
 
-        # if printBrands:
-        #     print("brands_counted")
-        #     pprint.pprint(brands_counted)
         # sort dict by value
         sorted_brands_counted = sorted(
             brands_counted.items(), key=lambda x: x[1], reverse=True
         )
-        # if printBrands and root != "Lyrics/":
-        #     print("sorted_brands_counted")
-        #     pprint.pprint(sorted_brands_counted)
-
         # print sorted_brands_counted if value is not 0
         for brand, count in sorted_brands_counted:
             if count != 0:

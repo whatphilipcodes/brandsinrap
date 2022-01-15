@@ -1,0 +1,233 @@
+*** Lyrics/2015_Fler_Der-staat-gegen-patrick-decker
+Resetting brands_counted: release_year_old:  release_year: 2015
+brands in album: 
+{'prada': 1, 'louis': 5, 'palace': 2, 'jordan': 1, 'nike': 1, 'versace': 2, 'gucci': 1}
+*** Lyrics/2015_Fler_Keiner-kommt-klar-mit-mir
+brands in album: 
+{'jordans': 2, 'louis': 1, 'gucci': 2}
+*** Lyrics/2015_Lgoony_Grape-tape     
+brands in album: 
+{'gucci': 3, 'versace': 9}
+*** Lyrics/2015_Money-boy_Audio-heroin
+brands in album: 
+{'gucci': 4, 'mcm': 1, 'versace': 2}
+*** Lyrics/2015_Money-boy_Back-from-the-dead
+brands in album: 
+{'lv': 1, 'gucci': 9, 'louis': 17, 'versace': 2, 'armani': 3, 'mcm': 1}
+*** Lyrics/2015_Money-boy_Cash-flow
+brands in album: 
+{'jordan': 12, 'nike': 1, 'prada': 1, 'fendi': 1, 'gucci': 1, 'louis': 3, 'ferragamo': 2, 'versace': 4, 'armani': 1}
+*** Lyrics/2015_Money-boy_Free-crack
+brands in album: 
+{'fendi': 2, 'gucci': 4, 'versace': 1, 'nike': 1, 'jordans': 1, 'louis': 3, 'prada': 1, 'jordan': 1, 'mcm': 1, 'dior': 1}
+*** Lyrics/2015_Money-boy_Ich-kann-mein-gesicht-nicht-fuhlen
+brands in album: 
+{'armani': 3, 'louis': 6, 'fendi': 2, 'nike': 2, 'gucci': 4, 'prada': 4, 'jordans': 2, 'adidas': 1, 'versace': 2, 'jordan': 1}
+*** Lyrics/2015_Money-boy_Skreet-classics
+brands in album: 
+{'gucci': 2, 'prada': 1, 'fendi': 2, 'louis': 1, 'jordan': 2, 'mcm': 1}
+*** Lyrics/2015_Money-boy_The-onslaught-continues
+brands in album: 
+{'gucci': 4, 'prada': 3, 'louis': 1, 'fendi': 1, 'versace': 2}
+*** Lyrics/2015_Money-boy_This-time-i-want-it-all
+brands in album: 
+{'jordan': 1, 'prada': 8, 'fendi': 2, 'louis': 7, 'gucci': 6, 'armani': 2, 'versace': 3, 'chanel': 1, 'ferragamo': 2, 'mcm': 1, 'nike': 1, 'ysl': 1}
+*** Lyrics/2016_Capital-bra_Kuku-bra
+Resetting brands_counted: release_year_old: 2015 release_year: 2016
+brands in album: 
+{'gucci': 7, 'louis': 2, 'nike': 3, 'jordan': 1, 'jordans': 2, 'prada': 1, 'chanel': 2}
+*** Lyrics/2016_Fler_Bewahrung-vorbei-ep
+brands in album: 
+{'gucci': 6, 'fendi': 6}
+*** Lyrics/2016_Fler_Vibe
+brands in album: 
+{'louis': 8, 'jordan': 2, 'chanel': 1, 'dior': 1, 'mcm': 1, 'jordans': 1, 'versace': 1}
+*** Lyrics/2016_Lgoony_Intergalactica
+brands in album: 
+{'versace': 1, 'gucci': 3}
+*** Lyrics/2016_Luciano_Locosquad-prasentiert-12812
+brands in album: 
+{'nike': 4}
+*** Lyrics/2016_Money-boy_Adht-das-mixtape
+brands in album: 
+{'louis': 1, 'jordan': 9, 'jordans': 1, 'versace': 1, 'armani': 1, 'gucci': 1, 'fendi': 1, 'dior': 1}
+*** Lyrics/2016_Money-boy_I-made-this-in-a-day
+brands in album: 
+{'jordan': 5, 'gucci': 5, 'louis': 7, 'ferragamo': 14, 'versace': 3, 'fendi': 3, 'armani': 13, 'adidas': 1, 'prada': 2, 'nike': 1}
+*** Lyrics/2016_Rin_Genesis-ep
+brands in album: 
+{'supreme': 2, 'palace': 1, 'acne': 1, 'gosha': 1, 'fendi': 1, 'gucci': 1, 'preme': 1}
+*** Lyrics/2016_Shindy_Dreams
+brands in album: 
+{'prada': 1, 'jordans': 1, 'balenciaga': 1, 'yves': 1, 'nike': 1, 'dior': 1}
+*** Lyrics/2016_Ufo361_Ich-bin-2-berliner
+brands in album: 
+{'adidas': 1, 'prada': 1, 'louis': 2, 'versace': 1}
+*** Lyrics/2016_Ufo361_Ich-bin-ein-berliner
+brands in album: 
+{'prada': 1, 'gucci': 2, 'louis': 1}
+*** Lyrics/2017_Capital-bra_Blyat
+Resetting brands_counted: release_year_old: 2016 release_year: 2017
+brands in album: 
+{'gucci': 94, 'armani': 1, 'louis': 1, 'chanel': 1, 'versace': 1, 'nike': 1, 'prada': 1}
+*** Lyrics/2017_Capital-bra_Ibrakadabra-ep
+brands in album:
+{'gucci': 2}
+*** Lyrics/2017_Capital-bra_Makarov-komplex
+brands in album: 
+{'gabbana': 1, 'gucci': 1, 'adidas': 1, 'armani': 1}
+*** Lyrics/2017_Capital-bra_Oh-kolleg-ep
+brands in album: 
+{}
+*** Lyrics/2017_Luciano_Banditorinho
+brands in album: 
+{'nike': 9, 'adidas': 1}
+*** Lyrics/2017_Luciano_Eiskalt
+brands in album: 
+{'adidas': 10}
+*** Lyrics/2017_Money-boy_Dynamite
+brands in album:
+{'ysl': 2}
+*** Lyrics/2017_Money-boy_The-race-money-boy
+brands in album:
+{'fendi': 1, 'gucci': 1}
+*** Lyrics/2017_Rin_Eros
+brands in album: 
+{'helmut': 1, 'supreme': 5, 'palace': 4, 'acne': 1, 'gosha': 4, 'preme': 10, 'cav': 2, 'vetements': 2, 'nike': 1, 'yves': 2, 'yamamoto': 1, 'gucci': 1}
+*** Lyrics/2017_Ufo361_Ich-bin-3-berliner
+brands in album: 
+{'gucci': 4, 'nike': 1, 'supreme': 1, 'gabbana': 2, 'prada': 1, 'louis': 1}
+*** Lyrics/2018_Capital-bra_5-songs-in-einer-nacht-ep
+Resetting brands_counted: release_year_old: 2017 release_year: 2018
+brands in album:
+{'gucci': 8, 'versace': 1, 'adidas': 1, 'nike': 1}
+*** Lyrics/2018_Capital-bra_Allein
+brands in album: 
+{'gucci': 83, 'dior': 1, 'louis': 1}
+*** Lyrics/2018_Capital-bra_Berlin-lebt
+brands in album: 
+{'gucci': 20, 'versace': 1, 'nike': 2, 'louis': 1, 'adidas': 1}
+*** Lyrics/2018_Capital-bra_Fickt-euch-alle-ep
+brands in album:
+{'gucci': 61, 'adidas': 2, 'nike': 2}
+*** Lyrics/2018_Fler_Conor-ep
+brands in album: 
+{'louis': 1, 'nike': 1}
+*** Lyrics/2018_Fler_Flizzy
+brands in album: 
+{'gucci': 6, 'louis': 20, 'nike': 6, 'versace': 1, 'vetements': 1, 'chanel': 1, 'balenciaga': 1}
+*** Lyrics/2018_Luciano_L-o-c-o
+brands in album: 
+{'jordan': 9, 'gucci': 6, 'versace': 1, 'prada': 2, 'fendi': 1, 'nike': 2}
+*** Lyrics/2018_Money-boy_Mann-unter-feuer
+brands in album:
+{'balenciaga': 6, 'dior': 1, 'fendi': 1, 'ysl': 5, 'gucci': 12, 'bape': 3, 'gabbana': 1, 'versace': 3, 'louis': 3, 'chanel': 1, 'supreme': 1, 'palace': 1, 'prada': 2}
+*** Lyrics/2018_Rin_Planet-megatron
+brands in album:
+{'chanel': 25, 'versace': 3, 'nike': 10, 'dior': 5, 'gucci': 1, 'prada': 2, 'balenciaga': 2, 'gabbana': 1}
+*** Lyrics/2018_Ufo361_808
+brands in album: 
+{'gabbana': 3, 'balenciaga': 17, 'supreme': 1, 'nike': 4, 'versace': 1, 'vetements': 1}
+*** Lyrics/2018_Ufo361_Tiffany
+brands in album: 
+{}
+*** Lyrics/2018_Ufo361_Vvs
+brands in album: 
+{'fendi': 2, 'balenciaga': 7, 'palace': 2, 'versace': 1, 'nike': 6, 'vetements': 1, 'jordan': 1, 'dior': 1}
+*** Lyrics/2018_Ufo361_Vvs-bonus-ep
+brands in album: 
+{'balenciaga': 7, 'vetements': 1, 'fendi': 2}
+*** Lyrics/2019_Capital-bra_Cb6
+Resetting brands_counted: release_year_old: 2018 release_year: 2019
+brands in album: 
+{'gucci': 32, 'louis': 6}
+*** Lyrics/2019_Capital-bra_Cherry-lady-single
+brands in album:
+{'gucci': 2}
+*** Lyrics/2019_Fler_Colucci
+brands in album: 
+{'gucci': 19, 'louis': 11, 'nike': 1, 'fendi': 2, 'prada': 1}
+*** Lyrics/2019_Lgoony_Lightcore
+brands in album: 
+{'versace': 1, 'nike': 2, 'gucci': 1, 'jordan': 1}
+*** Lyrics/2019_Luciano_Millies
+brands in album: 
+{'fendi': 88, 'yves': 1, 'dior': 4, 'prada': 11, 'louis': 2, 'nike': 1, 'gucci': 2}
+*** Lyrics/2019_Money-boy_Geld-motivierte-muzik
+brands in album: 
+{'chanel': 2, 'adidas': 1, 'gucci': 47, 'louis': 10, 'prada': 6, 'bape': 1, 'ysl': 7, 'dior': 1, 'lv': 1}
+*** Lyrics/2019_Money-boy_Quick-mart
+brands in album: 
+{'ysl': 6, 'gucci': 6, 'chanel': 4, 'nike': 1, 'jordan': 1, 'prada': 1, 'balenciaga': 1, 'versace': 1}
+*** Lyrics/2019_Rin_Nimmerland
+brands in album: 
+{'chanel': 1, 'preme': 1, 'gucci': 1, 'louis': 2, 'yves': 1, 'fendi': 1}
+*** Lyrics/2019_Shindy_Drama
+brands in album: 
+{'gucci': 2, 'prada': 1, 'ysl': 6, 'louis': 3, 'jordan': 1, 'dior': 2, 'ferragamo': 1}
+*** Lyrics/2019_Ufo361_WAVE
+brands in album: 
+{'louis': 2, 'supreme': 1, 'nike': 14}
+*** Lyrics/2019_Ufo361_Wonderland
+brands in album:
+{'balenciaga': 1, 'chanel': 3}
+*** Lyrics/2020_Capital-bra_Cb7
+Resetting brands_counted: release_year_old: 2019 release_year: 2020
+brands in album: 
+{'gucci': 7, 'jordan': 1, 'chanel': 4, 'dior': 1}
+*** Lyrics/2020_Fler_Atlantis
+brands in album: 
+{'ysl': 4, 'louis': 4, 'fendi': 1}
+*** Lyrics/2020_Luciano_Exot
+brands in album: 
+{'dior': 9, 'louis': 3, 'chanel': 4, 'yves': 6, 'fendi': 1}
+*** Lyrics/2020_Money-boy_Dripolympics
+brands in album: 
+{'ysl': 18, 'jordan': 1, 'gucci': 66, 'louis': 76, 'chanel': 3, 'fendi': 21, 'prada': 59, 'balenciaga': 3, 'gabbana': 1, 'ferragamo': 1, 'mcm': 1, 'versace': 12}
+*** Lyrics/2020_Money-boy_Feed-the-skreetz
+brands in album: 
+{'gucci': 8, 'versace': 8, 'ysl': 4, 'louis': 5, 'fendi': 2, 'gabbana': 6, 'jordans': 1, 'ferragamo': 1, 'balenciaga': 5, 'jordan': 1, 'yves': 2, 'prada': 1}
+*** Lyrics/2020_Shindy_Byzantinische-Rose
+brands in album:
+{'lv': 1, 'chanel': 1, 'dior': 1}
+*** Lyrics/2020_Ufo361_Big-drip-single
+brands in album:
+{'prada': 2, 'chanel': 2}
+*** Lyrics/2020_Ufo361_Rich-rich
+brands in album: 
+{'prada': 6, 'chanel': 10, 'versace': 4, 'louis': 3, 'dior': 3, 'balenciaga': 1}
+*** Lyrics/2020_Ufo361_Rich-rich-leftovers
+brands in album:
+{'louis': 3, 'fendi': 1, 'chanel': 2}
+*** Lyrics/2021_Fler_Widder
+Resetting brands_counted: release_year_old: 2020 release_year: 2021
+brands in album: 
+{'gucci': 1, 'prada': 1, 'jordans': 2, 'nike': 1, 'palace': 1, 'fendi': 1, 'louis': 7, 'chanel': 1, 'jordan': 1}
+*** Lyrics/2021_Lgoony_Go-green
+brands in album:
+{}
+*** Lyrics/2021_Luciano_Aqua
+brands in album: 
+{'prada': 6, 'fendi': 1, 'dior': 1, 'chanel': 2, 'louis': 2}
+*** Lyrics/2021_Money-boy_10-bullets
+brands in album:
+{'gucci': 12, 'louis': 12, 'fendi': 7, 'prada': 6, 'ysl': 3, 'versace': 2, 'jordans': 1, 'jordan': 1}
+*** Lyrics/2021_Money-boy_The-plug
+brands in album: 
+{'gucci': 5, 'ysl': 10, 'ferragamo': 60, 'versace': 1, 'balenciaga': 5, 'fendi': 3, 'jordans': 1, 'dior': 1, 'supreme': 1}
+*** Lyrics/2021_Rin_Kleinstadt
+brands in album: 
+{'prada': 4}
+*** Lyrics/2021_Shindy_Mandarinen
+brands in album:
+{'chanel': 4}
+*** Lyrics/2021_Ufo361_Destroy-all-copies
+brands in album: 
+{'prada': 15, 'louis': 2, 'dior': 2, 'chanel': 5, 'nike': 1, 'versace': 1, 'helmut': 1, 'fendi': 1}
+*** Lyrics/2021_Ufo361_Stay-high
+brands in album: 
+{'louis': 1, 'helmut': 1, 'prada': 1, 'nike': 1, 'palace': 3}
+*** Lyrics/2022_Capital-bra_8
+Resetting brands_counted: release_year_old: 2021 release_year: 2022
+brands in album:
+{'gucci': 1, 'dior': 1}

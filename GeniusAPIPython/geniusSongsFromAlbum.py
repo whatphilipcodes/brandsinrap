@@ -1,5 +1,5 @@
-#contains code from 
-#https://melaniewalsh.github.io/Intro-Cultural-Analytics/04-Data-Collection/09-Lyrics-Analysis.html
+# contains code from
+# https://melaniewalsh.github.io/Intro-Cultural-Analytics/04-Data-Collection/09-Lyrics-Analysis.html
 
 from bs4 import BeautifulSoup
 import re
@@ -8,7 +8,7 @@ import requests
 from pathlib import Path
 import csv
 
-#genius key
+# genius key
 # GET /artists/:id/albums
 
 
@@ -84,14 +84,26 @@ def download_album_lyrics(artist, album_name, album_release_year):
 
             # A line of code that we need to create a directory
             # os.makedirs(os.path.dirname(filename), exist_ok=True)
-            #Path(f"{release_year}_{artist_title}_{album_title}").mkdir(parents=True, exist_ok=True)
-            Path(f"Lyrics/{release_year}_{artist_title}_{album_title}").mkdir(parents=True, exist_ok=True)
-
-
-            # Save the lyrics for the song as a text file
-            song_object.save_lyrics(
-                filename=custom_filename, extension="txt", sanitize=False
+            # Path(f"{release_year}_{artist_title}_{album_title}").mkdir(parents=True, exist_ok=True)
+            Path(f"Lyrics/{release_year}_{artist_title}_{album_title}").mkdir(
+                parents=True, exist_ok=True
             )
+
+            # check if the file already exists
+            if Path(custom_filename + ".txt").is_file():
+                print(f"{custom_filename} already exists")
+                continue
+            else:
+                #skip if traceback occurs
+                try:
+                    # Save the lyrics for the song as a text file
+                    song_object.save_lyrics(
+                        filename=custom_filename, extension="txt", sanitize=False
+                    )
+                except:
+                    print(f"{custom_filename} skipped")
+                    continue
+
 
         # If the song doesn't contain lyrics
         else:
@@ -104,8 +116,9 @@ def print_csv(csv_name):
         rownr = 0
         print("*** albums to download:")
         for row in csv_reader_object:
-            print(row[0] + " " + row[1] + " " + row[2]) 
+            print(row[0] + " " + row[1] + " " + row[2])
         rownr += 1
+
 
 def download_lyrics(csv_name):
     with open(csv_name) as csvdatei:
@@ -115,13 +128,15 @@ def download_lyrics(csv_name):
         for row in csv_reader_object:
             # print(f'- Nachname: {row[0]} \t| Vorname: {row[1]} \t| Geburtstag: {row[2]}.')
             print("")
-            print("*** downloading lyrics from: " + row[0] + " " + row[1] + " " + row[2]) 
+            print(
+                "*** downloading lyrics from: " + row[0] + " " + row[1] + " " + row[2]
+            )
             print("")
             download_album_lyrics(row[0], row[1], row[2])
         rownr += 1
 
-#artist+album+song name from URL work
+
+# artist+album+song name from URL work
 print_csv("albums.csv")
 download_lyrics("albums.csv")
-
 
