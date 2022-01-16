@@ -3,15 +3,15 @@
 class RectBarChart {
   // Local object variabes
   ArrayList<PVector> Verts = new ArrayList<PVector>();
-  
+
   float lastXGrowth;
   float lastYGrowth;
-  
+
   PShape mask;
   boolean isY;
   PVector P;
   boolean played = false;
-  
+
   int chartIndex;
 
   // Constructor
@@ -62,7 +62,6 @@ class RectBarChart {
 
       lastYGrowth = offset;
       return new PVector(0, offset);
-      
     } else {
       PVector PQ = PVector.sub(Verts.get(1), P);
       offset = targetA / PQ.mag();
@@ -72,7 +71,7 @@ class RectBarChart {
       Verts.add(new PVector(P.x + offset, P.y));
 
       lastXGrowth = offset;
-      return new PVector(offset,0);
+      return new PVector(offset, 0);
     }
   }
 
@@ -132,7 +131,7 @@ class RectBarChart {
       }
     }
   }
-  
+
   // Calculates origin for the next barchart
   PVector newOrigin() {
     PVector newOrigin;
@@ -143,7 +142,7 @@ class RectBarChart {
     }
     return newOrigin;
   }
-  
+
   // Translates vertices into mask (PGraphics)
   void createMaskShape(PGraphics pg) {
     mask = createShape();
