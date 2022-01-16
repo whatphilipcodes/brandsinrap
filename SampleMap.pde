@@ -1,4 +1,5 @@
 //contains minium samplers, loads them and put them in a HashMap samples
+//samples are < 3s
 public class SampleMap {
     
     private HashMap<String, Sampler> samples = new HashMap<String, Sampler>();
