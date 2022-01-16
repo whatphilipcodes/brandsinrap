@@ -41,7 +41,7 @@ PImage titleScreen;
 // SETTINGS
 int startYear = 2015; // First year to be displayed (check csv folder)
 int endYear = 2020;// Last year to be displayed (check csv folder)
-int barDelay = 1400; // Set delay between individual bars here
+int barDelay = 3000; // Set delay between individual bars here
 float animSpeed = 0.06; // Controls lerp animation speed
 String imgVariant = "two"; // Which variant should be displayed? ("one" or "two")
 
