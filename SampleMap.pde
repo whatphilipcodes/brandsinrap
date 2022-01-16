@@ -4,9 +4,11 @@ public class SampleMap {
     private HashMap<String, Sampler> samples = new HashMap<String, Sampler>();
     private String samplesPath;
     private String[] sampleNames;
+    private int sampleYear;
     
     SampleMap(int year, String[] brandNames) {    
         sampleNames = brandNames;
+        sampleYear = year;
         //check if datapath exists
         samplesPath = dataPath("samples" + year + "/");
         File dir = new File(samplesPath);
@@ -17,9 +19,10 @@ public class SampleMap {
             //create samplers, load samples and put them in HashMap samples
             for (int i = 0; i < brandNames.length; i++) {
                 String brandName = brandNames[i];
-                String path = samplesPath + "/" + brandName + ".aif";
+                String sampleName = sampleYear + brandName + ".aif";
+                String path = samplesPath + "/" + sampleName;
                 if (!new File(path).exists()) {
-                    System.out.println("sample missing: " + brandName);
+                    System.out.println("sample missing: " + sampleName);
                     //System.exit(0);
                 } else {
                     samples.put(brandName, new Sampler(path, 1, minim));
@@ -38,12 +41,11 @@ public class SampleMap {
     //play sample 
     public void playSample(int brandNameIndex) {
         String brandName = sampleNames[brandNameIndex];
+        String sampleName = sampleYear + brandName + ".aif";
         if (samples.get(brandName) != null) {
-            println("playing sample: " + brandName);
+            println("playing sample: " + sampleName);
             samples.get(brandName).trigger();
-        } else {
-            //println("sample not found: " + brandName);
-        }
+        } 
     }
 }
 
