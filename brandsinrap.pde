@@ -1,4 +1,5 @@
 // "brandnames in rap music" by Philip Gerdes & Bernhard Hoffmann, supervised by Prof. Alexander Müller-Rakow // //<>//
+
 import java.util.Calendar;
 import generativedesign.*;
 import java.util.Map;
@@ -8,6 +9,7 @@ import ddf.minim.effects.*;
 import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
+
 //Minim Sound Libary
 Minim minim;
 AudioOutput out;
@@ -41,13 +43,15 @@ PImage titleScreen;
 // SETTINGS
 int startYear = 2015; // First year to be displayed (check csv folder)
 int endYear = 2020;// Last year to be displayed (check csv folder)
-int barDelay = 3000; // Set delay between individual bars here
+int barDelay = 3000; // Set delay between individual bars here; SETTINGS: 3000; 2800
 float animSpeed = 0.06; // Controls lerp animation speed
 String imgVariant = "two"; // Which variant should be displayed? ("one" or "two")
 
-int glitchIntensity = 2; // How displaced the glitches are (source and destination)
-int glitchAmount = 80000; // How many glitches per iteration
-int glitchIterations = 10000; // How often the glitch method will run each iteration
+// SETTING 01 prioritzes visual fidelity over performance which leads to long prerender times
+// SETTING 02 aims to balance performace and visual fidelity for a fluent experience
+int glitchIntensity = 2; // How displaced the glitches are (source and destination); SETTINGS: 2; 3
+int glitchAmount = 80000; // How many glitches per iteration; SETTINGS: 80000; 28000
+int glitchIterations = 10000; // How often the glitch method will run each iteration; SETTINGS: 10000; 1000
 
 void setup() {
     systems = new ArrayList<ChartSystem>();
