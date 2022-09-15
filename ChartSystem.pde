@@ -10,7 +10,7 @@ class ChartSystem {
   boolean isY;
   int timer;
   int chartSystemYear;
-  private SampleMap samplesMap;
+  //private SampleMap samplesMap;
   private String[] brandNames;
 
   int chartIndex = 0;
@@ -20,7 +20,7 @@ class ChartSystem {
     charts = new ArrayList<RectBarChart>();
     chartSystemYear = startYear + systemIteration;
     brandNames = loadData((chartSystemYear), 5);
-    samplesMap = new SampleMap(chartSystemYear, brandNames);
+    //samplesMap = new SampleMap(chartSystemYear, brandNames);
     status = new boolean[propData.length];
     currentOr = new PVector(x, y);
     growth = new PVector(0, 0);
@@ -77,7 +77,7 @@ class ChartSystem {
         status[i] = rbc.morph(animSpeed, 0.99);
         //play sample
         if (rbc.played == false) {
-          samplesMap.playSample(i);
+          //samplesMap.playSample(i);
           rbc.played = true;
         }
 

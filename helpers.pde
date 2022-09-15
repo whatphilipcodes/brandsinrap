@@ -9,7 +9,8 @@ boolean initIsY() {
   } else {
     isStartY = false;
   }
-  return isStartY;
+  //return isStartY;
+  return false;
 }
 
 // Outputs target Area at index iteration
@@ -20,7 +21,7 @@ float calcTargetA(int chartIndex) {
 }
 
 void keyReleased() {
-  if (key ==  's' || key ==  'S') saveFrame(timestamp() + "_##.png");
+  if (key ==  's' || key ==  'S') saveFrame("data/savedFrames/" + timestamp() + "_##.png");
 }
 
 String timestamp() {

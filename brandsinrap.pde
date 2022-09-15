@@ -11,8 +11,8 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
 //Minim Sound Libary
-Minim minim;
-AudioOutput out;
+//Minim minim;
+//AudioOutput out;
 
 // SCREEN SETUP //////////////////////
 int screenResX = 1080;
@@ -56,8 +56,8 @@ int glitchIterations = 10000; // How often the glitch method will run each itera
 void setup() {
     systems = new ArrayList<ChartSystem>();
     animDone = true;
-    minim = new Minim(this);
-    out = minim.getLineOut();
+    //minim = new Minim(this);
+    //out = minim.getLineOut();
     titleScreen = loadImage("titleScreen.png");
     background(0);
     noCursor();
